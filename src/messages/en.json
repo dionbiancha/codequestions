@@ -9,6 +9,9 @@
   "home": {
     "title": "CodeQuestions",
     "tagline": "Master your tech interview. One question at a time.",
+    "tagline1": "Master your tech interview.",
+    "tagline2": "One question at a time.",
+    "badge": "Open source · Free forever",
     "browse": "Browse Questions",
     "contribute": "Contribute",
     "howItWorks": "How it works",

@@ -9,6 +9,9 @@
   "home": {
     "title": "CodeQuestions",
     "tagline": "Domine sua entrevista técnica. Uma pergunta por vez.",
+    "tagline1": "Domine sua entrevista técnica.",
+    "tagline2": "Uma pergunta por vez.",
+    "badge": "Open source · Gratuito",
     "browse": "Ver Perguntas",
     "contribute": "Contribuir",
     "howItWorks": "Como funciona",

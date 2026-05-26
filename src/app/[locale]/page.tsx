@@ -12,6 +12,10 @@ export default async function HomePage() {
     ...c,
     count: getAllQuestionMeta(locale, c.slug).length,
   }))
+  const totalQuestions = CATEGORIES.reduce(
+    (sum, c) => sum + getAllQuestionMeta(locale, c.slug).length,
+    0
+  )
 
   const steps = [
     {
@@ -47,26 +51,70 @@ export default async function HomePage() {
     <div className="max-w-4xl mx-auto px-4 py-16">
 
       {/* Hero */}
-      <section className="text-center mb-24">
-        <h1 className="font-mono text-5xl font-bold text-blue-400 mb-4">
-          codequestions
-        </h1>
-        <p className="text-xl text-dark-muted mb-10 max-w-xl mx-auto">
-          {t('tagline')}
-        </p>
-        <div className="flex items-center justify-center gap-4 flex-wrap">
-          <Link
-            href={`/${locale}/questions`}
-            className="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-3 rounded transition-colors"
-          >
-            {t('browse')}
-          </Link>
-          <Link
-            href={`/${locale}/contribute`}
-            className="border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading px-6 py-3 rounded transition-colors"
-          >
-            {t('contribute')}
-          </Link>
+      <section className="relative text-center mb-24 pt-8 pb-4">
+        {/* Glow */}
+        <div className="absolute inset-x-0 top-0 h-72 flex items-start justify-center pointer-events-none overflow-hidden">
+          <div className="w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-3xl translate-y-8" />
+        </div>
+
+        <div className="relative">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 border border-dark-border bg-dark-surface rounded-full px-4 py-1.5 text-xs font-mono text-dark-muted mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
+            {t('badge')}
+          </div>
+
+          {/* Title */}
+          <h1 className="font-mono text-6xl font-bold mb-8 leading-none tracking-tight">
+            <span className="text-dark-heading">code</span><span className="text-blue-400">questions</span>
+          </h1>
+
+          {/* Tagline */}
+          <p className="text-2xl font-semibold text-dark-heading mb-2 leading-snug">
+            {t('tagline1')}
+          </p>
+          <p className="text-base text-dark-muted mb-10">
+            {t('tagline2')}
+          </p>
+
+          {/* Stats */}
+          <div className="flex items-center justify-center gap-4 text-xs font-mono text-dark-muted mb-10 flex-wrap">
+            <span>{totalQuestions} questions</span>
+            <span className="opacity-30">·</span>
+            <span>{CATEGORIES.length} categories</span>
+            <span className="opacity-30">·</span>
+            <span>EN + PT</span>
+          </div>
+
+          {/* CTAs */}
+          <div className="flex items-center justify-center gap-4 flex-wrap mb-12">
+            <Link
+              href={`/${locale}/questions`}
+              className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-3 rounded-lg transition-colors text-sm"
+            >
+              {t('browse')}
+            </Link>
+            <Link
+              href={`/${locale}/contribute`}
+              className="border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading px-6 py-3 rounded-lg transition-colors text-sm"
+            >
+              {t('contribute')}
+            </Link>
+          </div>
+
+          {/* Category pills */}
+          <div className="flex flex-wrap justify-center gap-2">
+            {CATEGORIES.map(cat => (
+              <Link
+                key={cat.slug}
+                href={`/${locale}/questions/${cat.slug}`}
+                className={`inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-full border ${cat.borderColor} ${cat.color} bg-dark-surface hover:opacity-80 transition-opacity`}
+              >
+                <span>{cat.icon}</span>
+                <span>{cat.slug}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
