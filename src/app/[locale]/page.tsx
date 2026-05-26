@@ -1,10 +1,14 @@
 import { getTranslations, getLocale } from 'next-intl/server'
 import Link from 'next/link'
+import Image from 'next/image'
 import { CATEGORIES } from '@/lib/categories'
+import { getContributors } from '@/lib/contributors'
 
 export default async function HomePage() {
   const t = await getTranslations('home')
   const locale = await getLocale()
+
+  const contributors = await getContributors()
 
   const steps = [
     {
@@ -121,6 +125,39 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* Contributors */}
+      {contributors.length > 0 && (
+        <section className="mb-24">
+          <h2 className="text-center text-xs font-mono uppercase tracking-widest text-dark-muted mb-10">
+            {t('contributors')}
+          </h2>
+          <p className="text-center text-sm text-dark-muted mb-8">{t('contributorsDesc')}</p>
+          <div className="flex flex-wrap justify-center gap-6">
+            {contributors.map(c => (
+              <a
+                key={c.login}
+                href={c.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center gap-2 group"
+                title={c.login}
+              >
+                <Image
+                  src={c.avatar_url}
+                  alt={c.login}
+                  width={56}
+                  height={56}
+                  className="rounded-full border-2 border-dark-border group-hover:border-blue-500/60 transition-colors"
+                />
+                <span className="text-xs font-mono text-dark-muted group-hover:text-dark-heading transition-colors">
+                  @{c.login}
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Contribute CTA */}
       <section className="bg-dark-surface border border-dark-border rounded-lg p-8 text-center">

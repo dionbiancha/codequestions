@@ -12,6 +12,8 @@
     "tagline1": "Domine sua entrevista técnica.",
     "tagline2": "Uma pergunta por vez.",
     "badge": "Open source · Gratuito",
+    "contributors": "Contribuidores",
+    "contributorsDesc": "Pessoas que ajudaram a construir o CodeQuestions",
     "ctaTitle": "Conhece uma pergunta que está faltando?",
     "ctaDesc": "CodeQuestions é open source. Adicione perguntas enviando um Pull Request — basta editar um arquivo markdown.",
     "ctaContribute": "Como contribuir",
