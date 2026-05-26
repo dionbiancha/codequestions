@@ -28,7 +28,7 @@ export default async function ContactPage() {
         </a>
 
         <a
-          href="https://github.com/your-org/codequestions/issues/new"
+          href="https://github.com/dionbiancha/codequestions/issues/new"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-gray-50 dark:bg-dark-surface border border-gray-200 dark:border-dark-border rounded-lg p-6 hover:border-blue-500/40 transition-colors flex items-center gap-4 group"

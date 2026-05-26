@@ -8,7 +8,7 @@ export type Contributor = {
 export async function getContributors(): Promise<Contributor[]> {
   try {
     const res = await fetch(
-      'https://api.github.com/repos/your-org/codequestions/contributors?per_page=30',
+      'https://api.github.com/repos/dionbiancha/codequestions/contributors?per_page=30',
       { next: { revalidate: 3600 } }
     )
     if (!res.ok) return []

@@ -9,7 +9,7 @@ Contributing to CodeQuestions is easy — you just need to know how to edit a Ma
 
 ## Step 1: Fork the repository
 
-Go to the [CodeQuestions GitHub repository](https://github.com/your-org/codequestions) and click **Fork**.
+Go to the [CodeQuestions GitHub repository](https://github.com/dionbiancha/codequestions) and click **Fork**.
 
 ## Step 2: Create a new branch
 
@@ -72,7 +72,7 @@ Contribuir com o CodeQuestions é simples — você só precisa saber editar um 
 
 ## Passo 1: Faça um fork do repositório
 
-Vá ao [repositório do CodeQuestions no GitHub](https://github.com/your-org/codequestions) e clique em **Fork**.
+Vá ao [repositório do CodeQuestions no GitHub](https://github.com/dionbiancha/codequestions) e clique em **Fork**.
 
 ## Passo 2: Crie um novo branch
 
