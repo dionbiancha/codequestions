@@ -31,11 +31,14 @@ const difficultyVariant: Record<string, 'blue' | 'green' | 'orange'> = {
 }
 
 function extractFlashcardParts(flashcardHtml: string): { front: string; back: string } {
+  // remark converts **Q:** → <strong>Q:</strong>; after stripping tags only "Q:" / "A:" remain
   const text = flashcardHtml.replace(/<[^>]+>/g, '').trim()
-  const parts = text.split(/\*\*[AR]:\*\*|\*\*[PR]:\*\*/)
-  const front = parts[0]?.replace(/\*\*[QP]:\*\*/g, '').trim() ?? ''
-  const back = parts[1]?.trim() ?? ''
-  return { front, back }
+  const frontMatch = text.match(/[QP]:\s*([\s\S]*?)(?=\n\s*[AR]:)/)
+  const backMatch = text.match(/[AR]:\s*([\s\S]*)/)
+  return {
+    front: frontMatch?.[1]?.trim() ?? '',
+    back: backMatch?.[1]?.trim() ?? '',
+  }
 }
 
 export default async function QuestionPage({ params }: Props) {

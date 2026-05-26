@@ -39,7 +39,7 @@ export function FlashCard({ questionPath, front, back }: Props) {
 
       <div
         className="relative cursor-pointer"
-        style={{ perspective: '1000px', minHeight: '140px' }}
+        style={{ perspective: '1000px' }}
         onClick={() => !answered && setFlipped(f => !f)}
       >
         <div
@@ -47,14 +47,13 @@ export function FlashCard({ questionPath, front, back }: Props) {
             transformStyle: 'preserve-3d',
             transition: 'transform 0.5s',
             transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-            position: 'relative',
-            minHeight: '140px',
+            display: 'grid',
           }}
         >
           {/* Front */}
           <div
-            style={{ backfaceVisibility: 'hidden' }}
-            className="absolute inset-0 bg-gray-50 dark:bg-dark-surface border border-blue-500/30 rounded-lg p-4 flex flex-col justify-between"
+            style={{ backfaceVisibility: 'hidden', gridArea: '1/1' }}
+            className="bg-gray-50 dark:bg-dark-surface border border-blue-500/30 rounded-lg p-4 flex flex-col justify-between min-h-[120px]"
           >
             <p className="text-gray-900 dark:text-dark-heading text-sm font-medium">{front}</p>
             <p className="text-xs text-gray-400 dark:text-dark-muted mt-3">{t('clickToFlip')}</p>
@@ -65,8 +64,9 @@ export function FlashCard({ questionPath, front, back }: Props) {
             style={{
               backfaceVisibility: 'hidden',
               transform: 'rotateY(180deg)',
+              gridArea: '1/1',
             }}
-            className="absolute inset-0 bg-gray-50 dark:bg-dark-surface border border-green-500/30 rounded-lg p-4 flex flex-col justify-between"
+            className="bg-gray-50 dark:bg-dark-surface border border-green-500/30 rounded-lg p-4 flex flex-col justify-between min-h-[120px]"
           >
             <p className="text-gray-700 dark:text-dark-text text-sm">{back}</p>
 
