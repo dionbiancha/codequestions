@@ -1,21 +1,10 @@
 import { getTranslations, getLocale } from 'next-intl/server'
 import Link from 'next/link'
 import { CATEGORIES } from '@/lib/categories'
-import { getAllQuestionMeta } from '@/lib/content'
 
 export default async function HomePage() {
   const t = await getTranslations('home')
   const locale = await getLocale()
-
-  const featuredCategories = CATEGORIES.slice(0, 3)
-  const categoryCounts = featuredCategories.map(c => ({
-    ...c,
-    count: getAllQuestionMeta(locale, c.slug).length,
-  }))
-  const totalQuestions = CATEGORIES.reduce(
-    (sum, c) => sum + getAllQuestionMeta(locale, c.slug).length,
-    0
-  )
 
   const steps = [
     {
@@ -77,15 +66,6 @@ export default async function HomePage() {
             {t('tagline2')}
           </p>
 
-          {/* Stats */}
-          <div className="flex items-center justify-center gap-4 text-xs font-mono text-dark-muted mb-10 flex-wrap">
-            <span>{totalQuestions} questions</span>
-            <span className="opacity-30">·</span>
-            <span>{CATEGORIES.length} categories</span>
-            <span className="opacity-30">·</span>
-            <span>EN + PT</span>
-          </div>
-
           {/* CTAs */}
           <div className="flex items-center justify-center gap-4 flex-wrap mb-12">
             <Link
@@ -136,28 +116,6 @@ export default async function HomePage() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Featured categories */}
-      <section className="mb-24">
-        <div className="grid md:grid-cols-3 gap-4">
-          {categoryCounts.map(cat => (
-            <Link
-              key={cat.slug}
-              href={`/${locale}/questions/${cat.slug}`}
-              className={`bg-dark-surface border ${cat.borderColor} rounded-lg p-6 hover:opacity-80 transition-opacity group`}
-            >
-              <div className="text-3xl mb-3">{cat.icon}</div>
-              <div className={`font-mono font-semibold ${cat.color} mb-1`}>{cat.slug}</div>
-              <div className="text-xs text-dark-muted">{cat.count} questions</div>
-            </Link>
-          ))}
-        </div>
-        <div className="text-center mt-6">
-          <Link href={`/${locale}/questions`} className="text-sm text-blue-400 hover:underline">
-            View all categories →
-          </Link>
         </div>
       </section>
 
