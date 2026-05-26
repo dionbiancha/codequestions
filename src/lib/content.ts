@@ -15,6 +15,7 @@ export type QuestionMeta = {
   difficulty: Difficulty
   lang: string
   path: string
+  quickAnswer: string
 }
 
 export type QuestionContent = QuestionMeta & {
@@ -43,9 +44,21 @@ export function getCategoryFromPath(questionPath: string): string {
   return questionPath.split('/')[0]
 }
 
+function stripMarkdown(text: string): string {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/\*(.*?)\*/g, '$1')
+    .replace(/`(.*?)`/g, '$1')
+    .replace(/^[-*+]\s+/gm, '')
+    .replace(/\n{2,}/g, ' ')
+    .replace(/\n/g, ' ')
+    .trim()
+}
+
 export function buildQuestionMeta(
   slug: string,
-  fm: Record<string, unknown>
+  fm: Record<string, unknown>,
+  rawContent = ''
 ): QuestionMeta {
   return {
     slug,
@@ -56,6 +69,7 @@ export function buildQuestionMeta(
     difficulty: (fm.difficulty as Difficulty) ?? 'intermediate',
     lang: fm.lang as string,
     path: `${fm.category}/${fm.subcategory}/${slug}`,
+    quickAnswer: stripMarkdown(extractSection(rawContent, 'Quick Answer')),
   }
 }
 
@@ -121,8 +135,8 @@ export function getAllQuestionMeta(locale: string, category: string): QuestionMe
     for (const file of files) {
       const slug = file.replace('.md', '')
       const raw = fs.readFileSync(path.join(subDir, file), 'utf-8')
-      const { data: fm } = matter(raw)
-      results.push(buildQuestionMeta(slug, fm))
+      const { data: fm, content } = matter(raw)
+      results.push(buildQuestionMeta(slug, fm, content))
     }
   }
   return results
