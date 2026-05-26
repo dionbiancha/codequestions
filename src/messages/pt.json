@@ -12,12 +12,15 @@
     "browse": "Ver Perguntas",
     "contribute": "Contribuir",
     "howItWorks": "Como funciona",
-    "step1Title": "Estude",
-    "step1Desc": "Leia respostas completas para as perguntas mais feitas em entrevistas.",
-    "step2Title": "Teste-se",
-    "step2Desc": "Use os flashcards para checar o que você realmente sabe.",
-    "step3Title": "Contribua",
-    "step3Desc": "Adicione perguntas via Pull Request. É open source."
+    "step1Title": "Leia a resposta completa",
+    "step1Desc": "Cada pergunta tem uma explicação detalhada para entendimento profundo e um resumo conciso pronto para o entrevistador.",
+    "step1Tag": "resposta completa · resposta rápida",
+    "step2Title": "Teste seu conhecimento",
+    "step2Desc": "Vire o flashcard e responda sem olhar. Teste o que você realmente sabe — não apenas o que acha que sabe.",
+    "step2Tag": "flashcard · memória ativa",
+    "step3Title": "Acompanhe seu progresso",
+    "step3Desc": "Marque perguntas como \"Sei!\" ou \"Preciso estudar\". O progresso é salvo no navegador — sem cadastro.",
+    "step3Tag": "salvo localmente · privado"
   },
   "categories": {
     "frontend": "Frontend",
