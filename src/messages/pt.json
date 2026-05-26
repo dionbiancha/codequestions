@@ -30,6 +30,8 @@
     "step3Tag": "salvo localmente · privado"
   },
   "categories": {
+    "noQuestions": "Nenhuma pergunta ainda para esta categoria neste idioma.",
+    "beFirst": "Seja o primeiro a contribuir →",
     "frontend": "Frontend",
     "backend": "Backend",
     "devops": "DevOps",

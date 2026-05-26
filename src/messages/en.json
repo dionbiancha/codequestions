@@ -30,6 +30,8 @@
     "step3Tag": "saved locally · private"
   },
   "categories": {
+    "noQuestions": "No questions yet for this category in this language.",
+    "beFirst": "Be the first to contribute →",
     "frontend": "Frontend",
     "backend": "Backend",
     "devops": "DevOps",

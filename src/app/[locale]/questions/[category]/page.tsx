@@ -45,10 +45,10 @@ export default async function CategoryPage({ params }: Props) {
       </div>
 
       {questions.length === 0 ? (
-        <div className="text-center py-20 text-gray-400 dark:text-dark-muted">
-          <p className="mb-4">No questions yet for this category in this language.</p>
+        <div className="text-center py-20 text-dark-muted">
+          <p className="mb-4">{t('categories.noQuestions')}</p>
           <Link href={`/${locale}/contribute`} className="text-blue-400 hover:underline">
-            Be the first to contribute →
+            {t('categories.beFirst')}
           </Link>
         </div>
       ) : (
