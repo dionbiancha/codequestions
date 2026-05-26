@@ -29,8 +29,8 @@ export default async function SupportPage() {
 
         <p className="text-sm text-dark-muted leading-relaxed mb-6 border-l-2 border-blue-500/40 pl-4">
           {isPt
-            ? 'Os valores arrecadados cobrem os custos de manutenção do projeto: hospedagem, domínio, e-mail profissional e tempo dedicado ao desenvolvimento e curadoria do conteúdo.'
-            : 'Contributions cover project running costs: hosting, domain, professional email, and the time spent developing and curating content.'}
+            ? 'Os valores arrecadados cobrem os custos de manutenção do projeto: domínio, e-mail profissional e tempo dedicado ao desenvolvimento e curadoria do conteúdo.'
+            : 'Contributions cover project running costs: domain, professional email, and the time spent developing and curating content.'}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-8">
