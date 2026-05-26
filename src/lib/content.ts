@@ -59,7 +59,7 @@ export function buildQuestionMeta(
   }
 }
 
-async function mdToHtml(markdown: string): Promise<string> {
+export async function mdToHtml(markdown: string): Promise<string> {
   const result = await remark().use(remarkHtml, { sanitize: false }).process(markdown)
   return result.toString()
 }

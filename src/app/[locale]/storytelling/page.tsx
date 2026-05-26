@@ -1,5 +1,5 @@
 import { getLocale, getTranslations } from 'next-intl/server'
-import { getQuestion } from '@/lib/content'
+import { getQuestion, mdToHtml } from '@/lib/content'
 import { MarkdownRenderer } from '@/components/ui/MarkdownRenderer'
 
 const FALLBACK_EN = `
@@ -87,11 +87,7 @@ export default async function StorytellingPage() {
   const question = await getQuestion(locale, 'soft-skills', 'storytelling')
   const html = question?.fullAnswer ?? null
 
-  const { remark } = await import('remark')
-  const remarkHtml = (await import('remark-html')).default
-  const fallbackHtml = await remark()
-    .use(remarkHtml, { sanitize: false })
-    .process(locale === 'pt' ? FALLBACK_PT : FALLBACK_EN)
+  const fallbackHtml = await mdToHtml(locale === 'pt' ? FALLBACK_PT : FALLBACK_EN)
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
@@ -102,7 +98,7 @@ export default async function StorytellingPage() {
           : 'How to build a powerful narrative for your HR interview.'}
       </p>
       <div className="bg-gray-50 dark:bg-dark-surface border border-gray-200 dark:border-dark-border rounded-lg p-8">
-        <MarkdownRenderer html={html ?? fallbackHtml.toString()} />
+        <MarkdownRenderer html={html ?? fallbackHtml} />
       </div>
     </div>
   )

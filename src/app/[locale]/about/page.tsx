@@ -1,7 +1,6 @@
 import { getTranslations, getLocale } from 'next-intl/server'
-import { remark } from 'remark'
-import remarkHtml from 'remark-html'
 import { StaticPage } from '@/components/ui/StaticPage'
+import { mdToHtml } from '@/lib/content'
 
 const ABOUT_EN = `
 ## What is CodeQuestions?
@@ -48,11 +47,6 @@ Porque o melhor conteúdo vem de pessoas que estiveram na sala. Todo desenvolved
 - **Reportar problemas:** Abra uma issue no GitHub
 - **Apoiar o projeto:** [Página de apoio](/pt/support)
 `
-
-async function mdToHtml(md: string) {
-  const result = await remark().use(remarkHtml, { sanitize: false }).process(md)
-  return result.toString()
-}
 
 export default async function AboutPage() {
   const t = await getTranslations('pages')
