@@ -7,7 +7,37 @@
       "Read(//c/Users/dionb/Repository/codequestions-scaffold/src/**)",
       "Read(//c/Users/dionb/Repository/codequestions-scaffold/public/**)",
       "Read(//c/Users/dionb/Repository/codequestions-scaffold/**)",
-      "PowerShell(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\i18n\")"
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\i18n\")",
+      "Bash(git commit -m ' *)",
+      "Bash(npm uninstall *)",
+      "Bash(node -e \"const pkg = require\\('./node_modules/tailwindcss/package.json'\\); console.log\\('tailwindcss version:', pkg.version\\);\")",
+      "Bash(dir \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\" /b)",
+      "Bash(cp \"src/middleware.ts\" \"src/proxy.ts\")",
+      "Bash(mv \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\middleware.ts\" \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\proxy.ts\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\components\\\\layout\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\lib\\\\__tests__\")",
+      "PowerShell(node --version)",
+      "PowerShell(npm list vitest 2>&1)",
+      "PowerShell(npm view vitest versions --json 2>&1)",
+      "PowerShell(npm view vitest versions --json 2>&1 | ConvertFrom-Json | Where-Object { $_ -match \"^2\\\\.\" } | Select-Object -Last 10)",
+      "PowerShell(npm list jsdom 2>&1)",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\content\\\\en\\\\frontend\\\\javascript\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\content\\\\en\\\\frontend\\\\react\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\content\\\\en\\\\backend\\\\node\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\content\\\\en\\\\soft-skills\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\content\\\\pt\\\\frontend\\\\javascript\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\content\\\\pt\\\\soft-skills\")",
+      "Bash(dir \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\components\\\\ui\")",
+      "Bash(dir \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\app\\\\[locale]\")",
+      "Bash(dir \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\app\\\\[locale]\\\\questions\")",
+      "Bash(git commit *)",
+      "Bash(mkdir \"C:/Users/dionb/Repository/codequestions/src/app/[locale]/questions/[category]/[slug]\")",
+      "Bash(mkdir -p \"c:/Users/dionb/Repository/codequestions/src/app/[locale]/faq\" \"c:/Users/dionb/Repository/codequestions/src/app/[locale]/about\" \"c:/Users/dionb/Repository/codequestions/src/app/[locale]/contribute\" \"c:/Users/dionb/Repository/codequestions/src/app/[locale]/contact\" \"c:/Users/dionb/Repository/codequestions/src/app/[locale]/support\" \"c:/Users/dionb/Repository/codequestions/src/app/[locale]/storytelling\")",
+      "Bash(node scripts/validate-content.mjs)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\dionb\\Repository\\codequestions\\src\\app\\[locale]\\questions\\[category]",
+      "c:\\Users\\dionb\\Repository\\codequestions\\src\\app\\[locale]"
     ]
   }
 }
