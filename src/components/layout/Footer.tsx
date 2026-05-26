@@ -30,7 +30,15 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <span className="font-mono font-bold text-blue-400 text-base">codequestions</span>
             <p className="text-xs text-dark-muted mt-2 leading-relaxed max-w-[180px]">
-              {t('madeWith')}
+              {t('madeBy')}{' '}
+              <a
+                href="https://www.linkedin.com/in/dionbiancha/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:underline"
+              >
+                Dionei Bianchati
+              </a>
             </p>
           </div>
 

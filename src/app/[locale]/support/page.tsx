@@ -16,50 +16,35 @@ export default async function SupportPage() {
           : 'CodeQuestions is free and open source. If it helped you, consider supporting the project.'}
       </p>
 
-      <div className="flex flex-col gap-4">
-        <a
-          href="https://github.com/sponsors/your-org"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-dark-surface border border-dark-border rounded-lg p-6 hover:border-pink-500/40 transition-colors flex items-center gap-4 group"
-        >
-          <span className="text-3xl">💖</span>
+      <div className="bg-dark-surface border border-dark-border rounded-xl p-8">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-3xl">🇧🇷</span>
           <div>
-            <div className="font-medium text-dark-heading group-hover:text-pink-400 transition-colors">GitHub Sponsors</div>
-            <div className="text-sm text-dark-muted">{isPt ? 'Apoio recorrente via GitHub' : 'Recurring support via GitHub'}</div>
-          </div>
-        </a>
-
-        <a
-          href="https://ko-fi.com/your-handle"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-dark-surface border border-dark-border rounded-lg p-6 hover:border-yellow-500/40 transition-colors flex items-center gap-4 group"
-        >
-          <span className="text-3xl">☕</span>
-          <div>
-            <div className="font-medium text-dark-heading group-hover:text-yellow-400 transition-colors">Ko-fi</div>
-            <div className="text-sm text-dark-muted">{isPt ? 'Pague um café' : 'Buy me a coffee'}</div>
-          </div>
-        </a>
-
-        <div className="bg-dark-surface border border-dark-border rounded-lg p-6">
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-3xl">🇧🇷</span>
-            <div>
-              <div className="font-medium text-dark-heading">Pix</div>
-              <div className="text-sm text-dark-muted">{isPt ? 'Para contribuidores brasileiros' : 'For Brazilian contributors'}</div>
+            <div className="font-semibold text-dark-heading text-lg">Pix</div>
+            <div className="text-sm text-dark-muted">
+              {isPt ? 'Transferência instantânea · sem taxas' : 'Instant transfer · no fees'}
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row items-center gap-6">
-            <PixQRCode />
-            <div className="flex flex-col gap-2 text-sm text-dark-muted">
-              <p>{isPt ? 'Escaneie o QR code com o app do seu banco.' : 'Scan the QR code with your banking app.'}</p>
-              <p>{isPt ? 'Ou copie a chave Pix:' : 'Or copy the Pix key:'}</p>
-              <div className="bg-dark-bg border border-dark-border rounded px-3 py-2 font-mono text-dark-muted text-xs select-all">
-                pix@dionei.com
-              </div>
+        </div>
+
+        <p className="text-sm text-dark-muted leading-relaxed mb-6 border-l-2 border-blue-500/40 pl-4">
+          {isPt
+            ? 'Os valores arrecadados cobrem os custos de manutenção do projeto: hospedagem, domínio, e-mail profissional e tempo dedicado ao desenvolvimento e curadoria do conteúdo.'
+            : 'Contributions cover project running costs: hosting, domain, professional email, and the time spent developing and curating content.'}
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center gap-8">
+          <PixQRCode />
+          <div className="flex flex-col gap-3 text-sm text-dark-muted">
+            <p>{isPt ? 'Escaneie com o app do seu banco:' : 'Scan with your banking app:'}</p>
+            <div className="bg-dark-bg border border-dark-border rounded px-3 py-2 font-mono text-dark-muted text-xs select-all">
+              pix@dionei.com
             </div>
+            <p className="text-xs text-dark-muted/60">
+              {isPt
+                ? 'Qualquer valor é bem-vindo. Muito obrigado! 🙏'
+                : 'Any amount is welcome. Thank you! 🙏'}
+            </p>
           </div>
         </div>
       </div>
