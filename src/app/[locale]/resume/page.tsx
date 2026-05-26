@@ -139,7 +139,7 @@ const BULLETS: Record<Lang, { bad: string; good: string }[]> = {
   ],
 }
 
-const TEXT: Record<Lang, Record<string, string>> = {
+const TEXT: Record<Lang, Record<string, string | string[]>> = {
   pt: {
     title: 'Currículo ATS',
     subtitle: 'Como montar um currículo que passa pelos robôs e convence o recrutador.',
@@ -351,7 +351,7 @@ export default async function ResumePage() {
         <h2 className="text-xs font-mono uppercase tracking-widest text-dark-muted mb-6">{tx.tipsTitle}</h2>
         <div className="bg-dark-surface border border-dark-border rounded-xl p-6">
           <ul className="space-y-3">
-            {tx.tips.map((tip: string, i: number) => (
+            {(tx.tips as string[]).map((tip: string, i: number) => (
               <li key={i} className="flex items-start gap-3">
                 <span className="w-4 h-4 rounded border border-dark-border flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-dark-muted leading-relaxed">{tip}</span>
