@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/dionb/.claude/plugins/cache/superpowers-dev/superpowers/5.1.0/skills/brainstorming/**)",
+      "Read(//c/Users/dionb/.claude/plugins/cache/superpowers-dev/superpowers/5.1.0/**)",
+      "Bash(bash \"C:\\\\Users\\\\dionb\\\\.claude\\\\plugins\\\\cache\\\\superpowers-dev\\\\superpowers\\\\5.1.0\\\\skills\\\\brainstorming\\\\scripts\\\\start-server.sh\" --project-dir \"c:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\")",
+      "Read(//c/Users/dionb/Repository/codequestions-scaffold/src/**)",
+      "Read(//c/Users/dionb/Repository/codequestions-scaffold/public/**)",
+      "Read(//c/Users/dionb/Repository/codequestions-scaffold/**)",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\\\\src\\\\i18n\")"
+    ]
+  }
+}

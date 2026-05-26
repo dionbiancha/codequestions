@@ -1,0 +1,103 @@
+<h2>How should users browse questions?</h2>
+<p class="subtitle">How should the navigation and listing of questions be organized?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="sidebar-tree" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0d1117;padding:12px;border-radius:6px;font-family:monospace;display:flex;gap:8px;min-height:130px">
+      <div style="width:130px;background:#161b22;border-radius:4px;padding:8px;border:1px solid #30363d;flex-shrink:0">
+        <div style="color:#8b949e;font-size:9px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Categories</div>
+        <div style="color:#58a6ff;font-size:10px;margin-bottom:3px">▼ Frontend</div>
+        <div style="color:#c9d1d9;font-size:10px;padding-left:8px;margin-bottom:2px">· JavaScript</div>
+        <div style="color:#c9d1d9;font-size:10px;padding-left:8px;margin-bottom:2px">· React</div>
+        <div style="color:#c9d1d9;font-size:10px;padding-left:8px;margin-bottom:6px">· CSS</div>
+        <div style="color:#3fb950;font-size:10px;margin-bottom:3px">▶ Backend</div>
+        <div style="color:#3fb950;font-size:10px;margin-bottom:3px">▶ DevOps</div>
+        <div style="color:#3fb950;font-size:10px">▶ Data</div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:4px">
+        <div style="background:#161b22;border-radius:4px;padding:7px;border:1px solid #30363d">
+          <div style="color:#f0f6fc;font-size:10px;font-weight:600">What is event delegation?</div>
+          <div style="margin-top:3px;display:flex;gap:3px">
+            <span style="background:#388bfd20;color:#58a6ff;padding:1px 5px;border-radius:10px;font-size:8px">JS</span>
+          </div>
+        </div>
+        <div style="background:#161b22;border-radius:4px;padding:7px;border:1px solid #30363d">
+          <div style="color:#f0f6fc;font-size:10px;font-weight:600">Explain the event loop</div>
+        </div>
+        <div style="background:#161b22;border-radius:4px;padding:7px;border:1px solid #388bfd;border-left:3px solid #58a6ff">
+          <div style="color:#58a6ff;font-size:10px;font-weight:600">let vs const vs var</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Sidebar Tree</h3>
+      <p>Persistent sidebar with collapsible category tree. Main area shows questions for selected category. Classic dev-tool feel — easy to browse hierarchically.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="filters-grid" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0d1117;padding:12px;border-radius:6px;min-height:130px">
+      <div style="display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap">
+        <span style="background:#388bfd;color:#fff;padding:3px 8px;border-radius:20px;font-size:9px;font-family:monospace">All</span>
+        <span style="background:#161b22;color:#8b949e;padding:3px 8px;border-radius:20px;font-size:9px;font-family:monospace;border:1px solid #30363d">Frontend</span>
+        <span style="background:#161b22;color:#8b949e;padding:3px 8px;border-radius:20px;font-size:9px;font-family:monospace;border:1px solid #30363d">Backend</span>
+        <span style="background:#161b22;color:#8b949e;padding:3px 8px;border-radius:20px;font-size:9px;font-family:monospace;border:1px solid #30363d">DevOps</span>
+        <span style="background:#161b22;color:#8b949e;padding:3px 8px;border-radius:20px;font-size:9px;font-family:monospace;border:1px solid #30363d">React</span>
+        <span style="background:#161b22;color:#8b949e;padding:3px 8px;border-radius:20px;font-size:9px;font-family:monospace;border:1px solid #30363d">Node</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px">
+        <div style="background:#161b22;border-radius:4px;padding:7px;border:1px solid #30363d">
+          <div style="color:#f0f6fc;font-size:10px;font-weight:600">Event delegation</div>
+          <div style="color:#8b949e;font-size:9px;margin-top:2px">JavaScript · Frontend</div>
+        </div>
+        <div style="background:#161b22;border-radius:4px;padding:7px;border:1px solid #30363d">
+          <div style="color:#f0f6fc;font-size:10px;font-weight:600">Event loop</div>
+          <div style="color:#8b949e;font-size:9px;margin-top:2px">JavaScript · Frontend</div>
+        </div>
+        <div style="background:#161b22;border-radius:4px;padding:7px;border:1px solid #30363d">
+          <div style="color:#f0f6fc;font-size:10px;font-weight:600">let vs const vs var</div>
+          <div style="color:#8b949e;font-size:9px;margin-top:2px">JavaScript · Frontend</div>
+        </div>
+        <div style="background:#161b22;border-radius:4px;padding:7px;border:1px solid #30363d">
+          <div style="color:#f0f6fc;font-size:10px;font-weight:600">REST vs GraphQL</div>
+          <div style="color:#8b949e;font-size:9px;margin-top:2px">API · Backend</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Filter Tags + Grid</h3>
+      <p>Tag-based filter bar at the top + questions in a responsive grid. Click tags to filter. More flexible — a question can belong to multiple categories simultaneously.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="hub-cards" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0d1117;padding:12px;border-radius:6px;min-height:130px">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:6px">
+        <div style="background:#161b22;border-radius:6px;padding:8px;border:1px solid #30363d;text-align:center">
+          <div style="font-size:16px;margin-bottom:3px">⚛️</div>
+          <div style="color:#58a6ff;font-size:9px;font-weight:600;font-family:monospace">Frontend</div>
+          <div style="color:#8b949e;font-size:8px">42 questions</div>
+        </div>
+        <div style="background:#161b22;border-radius:6px;padding:8px;border:1px solid #30363d;text-align:center">
+          <div style="font-size:16px;margin-bottom:3px">🖥️</div>
+          <div style="color:#3fb950;font-size:9px;font-weight:600;font-family:monospace">Backend</div>
+          <div style="color:#8b949e;font-size:8px">38 questions</div>
+        </div>
+        <div style="background:#161b22;border-radius:6px;padding:8px;border:1px solid #30363d;text-align:center">
+          <div style="font-size:16px;margin-bottom:3px">🐳</div>
+          <div style="color:#f78166;font-size:9px;font-weight:600;font-family:monospace">DevOps</div>
+          <div style="color:#8b949e;font-size:8px">24 questions</div>
+        </div>
+      </div>
+      <div style="background:#161b22;border-radius:4px;padding:6px;border:1px solid #30363d;text-align:center">
+        <div style="color:#8b949e;font-size:9px">↳ click category → browse its questions</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Category Hub</h3>
+      <p>Landing page shows category cards (Frontend, Backend, DevOps, etc.). Click one to go to that category's question list. Clean entry point — each area feels like its own section.</p>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,72 @@
+<h2>How should the question detail page look?</h2>
+<p class="subtitle">How should the 3 sections (full answer, brief answer, flashcard) be presented?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="tabs" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0d1117;padding:12px;border-radius:6px;font-family:monospace;min-height:150px">
+      <div style="color:#f0f6fc;font-size:11px;font-weight:700;margin-bottom:8px">What is event delegation?</div>
+      <div style="display:flex;gap:0;margin-bottom:8px;border-bottom:1px solid #30363d">
+        <div style="color:#58a6ff;font-size:9px;padding:4px 10px;border-bottom:2px solid #58a6ff;cursor:pointer">Full Answer</div>
+        <div style="color:#8b949e;font-size:9px;padding:4px 10px;cursor:pointer">Quick Answer</div>
+        <div style="color:#8b949e;font-size:9px;padding:4px 10px;cursor:pointer">Flashcard</div>
+      </div>
+      <div style="background:#161b22;border-radius:4px;padding:10px;border:1px solid #30363d">
+        <div style="color:#c9d1d9;font-size:10px;line-height:1.5">Event delegation is a technique where a single event listener is placed on a parent element instead of multiple listeners on child elements. It works because of event bubbling...</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Tabs</h3>
+      <p>Full Answer / Quick Answer / Flashcard as tabs on the question page. Clean and focused — one section visible at a time, no scroll.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="sections" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0d1117;padding:12px;border-radius:6px;font-family:monospace;min-height:150px">
+      <div style="color:#f0f6fc;font-size:11px;font-weight:700;margin-bottom:8px">What is event delegation?</div>
+      <div style="background:#161b22;border-radius:4px;padding:8px;border:1px solid #30363d;margin-bottom:5px">
+        <div style="color:#58a6ff;font-size:8px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">Full Answer</div>
+        <div style="color:#c9d1d9;font-size:9px;line-height:1.4">Event delegation is a technique where a single event listener is placed on a parent element instead of multiple listeners on child elements...</div>
+      </div>
+      <div style="background:#161b22;border-radius:4px;padding:8px;border-left:3px solid #3fb950;margin-bottom:5px">
+        <div style="color:#3fb950;font-size:8px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">Quick Answer for Interviewer</div>
+        <div style="color:#c9d1d9;font-size:9px">"A pattern that attaches one listener on a parent to handle events from its children via bubbling."</div>
+      </div>
+      <div style="background:#161b22;border-radius:4px;padding:8px;border-left:3px solid #f78166">
+        <div style="color:#f78166;font-size:8px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">Flashcard</div>
+        <div style="color:#8b949e;font-size:9px;text-align:center">[ tap to reveal answer ]</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Stacked Sections</h3>
+      <p>All 3 sections visible on scroll, color-coded by type. Full answer is top, quick answer in the middle, flashcard at the bottom with tap-to-reveal. Everything accessible at once.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="split" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0d1117;padding:12px;border-radius:6px;font-family:monospace;min-height:150px">
+      <div style="color:#f0f6fc;font-size:11px;font-weight:700;margin-bottom:8px">What is event delegation?</div>
+      <div style="display:flex;gap:6px">
+        <div style="flex:2;background:#161b22;border-radius:4px;padding:8px;border:1px solid #30363d">
+          <div style="color:#58a6ff;font-size:8px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Full Answer</div>
+          <div style="color:#c9d1d9;font-size:9px;line-height:1.4">Event delegation is a technique where a single event listener is placed on a parent element...</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:5px">
+          <div style="background:#161b22;border-radius:4px;padding:7px;border-left:2px solid #3fb950">
+            <div style="color:#3fb950;font-size:7px;text-transform:uppercase;margin-bottom:2px">Quick</div>
+            <div style="color:#c9d1d9;font-size:8px">"One listener on parent, handles children via bubbling."</div>
+          </div>
+          <div style="background:#161b22;border-radius:4px;padding:7px;border:1px solid #f78166;text-align:center;cursor:pointer">
+            <div style="color:#f78166;font-size:8px">🃏 Flashcard</div>
+            <div style="color:#8b949e;font-size:7px;margin-top:2px">tap to flip</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Split View</h3>
+      <p>Full answer on the left (wider), quick answer + flashcard stacked on the right sidebar. Everything visible at once without scrolling on desktop. Collapses to stacked on mobile.</p>
+    </div>
+  </div>
+
+</div>
