@@ -75,8 +75,16 @@ export async function getQuestion(
   category: string,
   slug: string
 ): Promise<QuestionContent | null> {
-  const filePath = path.join(CONTENT_DIR, locale, category, `${slug}.md`)
-  if (!fs.existsSync(filePath)) return null
+  // Files live at content/{locale}/{category}/{subcategory}/{slug}.md
+  const categoryDir = path.join(CONTENT_DIR, locale, category)
+  if (!fs.existsSync(categoryDir)) return null
+
+  let filePath: string | null = null
+  for (const sub of fs.readdirSync(categoryDir)) {
+    const candidate = path.join(categoryDir, sub, `${slug}.md`)
+    if (fs.existsSync(candidate)) { filePath = candidate; break }
+  }
+  if (!filePath) return null
 
   const raw = fs.readFileSync(filePath, 'utf-8')
   const { data: fm, content } = matter(raw)
