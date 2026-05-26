@@ -17,6 +17,7 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-6">
           <Link href={`/${locale}/questions`} className="text-sm text-dark-muted hover:text-dark-heading transition-colors">{t('questions')}</Link>
           <Link href={`/${locale}/storytelling`} className="text-sm text-dark-muted hover:text-dark-heading transition-colors">{t('storytelling')}</Link>
+          <Link href={`/${locale}/resume`} className="text-sm text-dark-muted hover:text-dark-heading transition-colors">{t('resume')}</Link>
         </nav>
       </div>
     </header>

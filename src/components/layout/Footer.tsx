@@ -54,6 +54,14 @@ export function Footer() {
                   {nav("storytelling")}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href={`/${locale}/resume`}
+                  className="text-sm text-dark-text hover:text-dark-heading transition-colors"
+                >
+                  {nav("resume")}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -63,14 +71,6 @@ export function Footer() {
               Projeto
             </p>
             <ul className="flex flex-col gap-2">
-              <li>
-                <Link
-                  href={`/${locale}/contribute`}
-                  className="text-sm text-dark-text hover:text-dark-heading transition-colors"
-                >
-                  {nav("contribute")}
-                </Link>
-              </li>
               <li>
                 <Link
                   href={`/${locale}/support`}
@@ -88,14 +88,12 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a
-                  href="https://github.com/dionbiancha/codequestions"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href={`/${locale}/contribute`}
                   className="text-sm text-dark-text hover:text-dark-heading transition-colors"
                 >
-                  GitHub ↗
-                </a>
+                  {nav("contribute")}
+                </Link>
               </li>
             </ul>
           </div>
