@@ -30,6 +30,8 @@
     "step3Tag": "salvo localmente · privado"
   },
   "categories": {
+    "title": "Perguntas de Entrevista",
+    "subtitle": "Navegue por categoria. Clique em um card para ver todas as perguntas.",
     "noQuestions": "Nenhuma pergunta ainda para esta categoria neste idioma.",
     "beFirst": "Seja o primeiro a contribuir →",
     "frontend": "Frontend",

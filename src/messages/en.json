@@ -30,6 +30,8 @@
     "step3Tag": "saved locally · private"
   },
   "categories": {
+    "title": "Interview Questions",
+    "subtitle": "Browse by category. Click a card to see all questions.",
     "noQuestions": "No questions yet for this category in this language.",
     "beFirst": "Be the first to contribute →",
     "frontend": "Frontend",

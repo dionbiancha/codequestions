@@ -15,11 +15,11 @@ export default async function QuestionsPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="font-mono text-3xl font-bold text-gray-900 dark:text-dark-heading mb-2">
-        Interview Questions
+      <h1 className="font-mono text-3xl font-bold text-dark-heading mb-2">
+        {t('categories.title')}
       </h1>
-      <p className="text-gray-500 dark:text-dark-muted mb-10">
-        Browse by category. Click a card to see all questions.
+      <p className="text-dark-muted mb-10">
+        {t('categories.subtitle')}
       </p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {categoriesWithCount.map(({ cat, label, count }) => (
