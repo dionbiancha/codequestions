@@ -125,17 +125,17 @@ export default async function HomePage() {
       {/* Contribute CTA */}
       <section className="bg-dark-surface border border-dark-border rounded-lg p-8 text-center">
         <h2 className="text-dark-heading font-semibold text-lg mb-2">
-          Know a question that&apos;s missing?
+          {t('ctaTitle')}
         </h2>
         <p className="text-dark-muted text-sm mb-6 max-w-md mx-auto">
-          CodeQuestions is open source. Add questions by submitting a Pull Request — just edit a markdown file.
+          {t('ctaDesc')}
         </p>
         <div className="flex items-center justify-center gap-4 flex-wrap">
           <Link href={`/${locale}/contribute`} className="bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2 rounded transition-colors">
-            How to contribute
+            {t('ctaContribute')}
           </Link>
           <Link href={`/${locale}/support`} className="border border-dark-border text-dark-muted hover:text-dark-heading text-sm px-5 py-2 rounded transition-colors">
-            Support the project
+            {t('ctaSupport')}
           </Link>
         </div>
       </section>
