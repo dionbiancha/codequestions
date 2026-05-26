@@ -22,38 +22,72 @@ export function Footer() {
   }
 
   return (
-    <footer className="border-t border-dark-border mt-auto py-8">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-dark-muted">
-        <p>{t('madeWith')}</p>
+    <footer className="border-t border-dark-border mt-auto py-12">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
 
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2">
-            {LOCALES.map(l => (
-              <button
-                key={l.code}
-                onClick={() => switchLocale(l.code)}
-                className={`text-xs font-mono px-3 py-1 rounded border transition-colors ${
-                  locale === l.code
-                    ? 'border-blue-500/60 text-blue-400'
-                    : 'border-dark-border text-dark-muted hover:text-dark-heading'
-                }`}
-              >
-                {l.label}
-              </button>
-            ))}
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-1">
+            <span className="font-mono font-bold text-blue-400 text-base">codequestions</span>
+            <p className="text-xs text-dark-muted mt-2 leading-relaxed max-w-[180px]">
+              {t('madeWith')}
+            </p>
           </div>
 
-          <Link href={`/${locale}/contribute`} className="hover:text-dark-heading transition-colors">{nav('contribute')}</Link>
-          <Link href={`/${locale}/support`} className="hover:text-dark-heading transition-colors">{nav('support')}</Link>
-          <Link href={`/${locale}/about`} className="hover:text-dark-heading transition-colors">{nav('about')}</Link>
-          <Link
-            href="https://github.com/your-org/codequestions"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-dark-heading transition-colors"
-          >
-            {t('openSource')} ↗
-          </Link>
+          {/* Navigation */}
+          <div>
+            <p className="text-xs font-mono uppercase tracking-widest text-dark-muted mb-3">Menu</p>
+            <ul className="flex flex-col gap-2">
+              <li><Link href={`/${locale}/questions`} className="text-sm text-dark-text hover:text-dark-heading transition-colors">{nav('questions')}</Link></li>
+              <li><Link href={`/${locale}/storytelling`} className="text-sm text-dark-text hover:text-dark-heading transition-colors">{nav('storytelling')}</Link></li>
+            </ul>
+          </div>
+
+          {/* Project */}
+          <div>
+            <p className="text-xs font-mono uppercase tracking-widest text-dark-muted mb-3">Projeto</p>
+            <ul className="flex flex-col gap-2">
+              <li><Link href={`/${locale}/contribute`} className="text-sm text-dark-text hover:text-dark-heading transition-colors">{nav('contribute')}</Link></li>
+              <li><Link href={`/${locale}/support`} className="text-sm text-dark-text hover:text-dark-heading transition-colors">{nav('support')}</Link></li>
+              <li><Link href={`/${locale}/about`} className="text-sm text-dark-text hover:text-dark-heading transition-colors">{nav('about')}</Link></li>
+              <li>
+                <a
+                  href="https://github.com/your-org/codequestions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-dark-text hover:text-dark-heading transition-colors"
+                >
+                  GitHub ↗
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Language */}
+          <div>
+            <p className="text-xs font-mono uppercase tracking-widest text-dark-muted mb-3">Idioma</p>
+            <ul className="flex flex-col gap-2">
+              {LOCALES.map(l => (
+                <li key={l.code}>
+                  <button
+                    onClick={() => switchLocale(l.code)}
+                    className={`text-sm transition-colors ${
+                      locale === l.code
+                        ? 'text-blue-400'
+                        : 'text-dark-text hover:text-dark-heading'
+                    }`}
+                  >
+                    {l.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
+
+        <div className="border-t border-dark-border pt-6 text-xs text-dark-muted font-mono">
+          © {new Date().getFullYear()} codequestions
         </div>
       </div>
     </footer>
