@@ -11,6 +11,7 @@ const LOCALES = [
 
 export function Footer() {
   const t = useTranslations('footer')
+  const nav = useTranslations('nav')
   const locale = useLocale()
   const pathname = usePathname()
   const router = useRouter()
@@ -42,6 +43,9 @@ export function Footer() {
             ))}
           </div>
 
+          <Link href={`/${locale}/contribute`} className="hover:text-dark-heading transition-colors">{nav('contribute')}</Link>
+          <Link href={`/${locale}/support`} className="hover:text-dark-heading transition-colors">{nav('support')}</Link>
+          <Link href={`/${locale}/about`} className="hover:text-dark-heading transition-colors">{nav('about')}</Link>
           <Link
             href="https://github.com/your-org/codequestions"
             target="_blank"
