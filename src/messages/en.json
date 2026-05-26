@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "questions": "Questions",
+    "storytelling": "StoryTelling",
+    "contribute": "Contribute",
+    "support": "Support Us",
+    "about": "About"
+  },
+  "home": {
+    "title": "CodeQuestions",
+    "tagline": "Master your tech interview. One question at a time.",
+    "browse": "Browse Questions",
+    "contribute": "Contribute",
+    "howItWorks": "How it works",
+    "step1Title": "Study",
+    "step1Desc": "Read complete answers to the most asked interview questions.",
+    "step2Title": "Test yourself",
+    "step2Desc": "Use flashcards to check what you really know.",
+    "step3Title": "Contribute",
+    "step3Desc": "Add questions via Pull Request. It's open source."
+  },
+  "categories": {
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "devops": "DevOps",
+    "data": "Data",
+    "soft-skills": "Soft Skills",
+    "architecture": "Architecture",
+    "security": "Security"
+  },
+  "question": {
+    "fullAnswer": "Full Answer",
+    "quickAnswer": "Quick Answer for Interviewer",
+    "flashcard": "Flashcard",
+    "clickToFlip": "Click to reveal answer",
+    "gotIt": "Got it!",
+    "needReview": "Need more study",
+    "difficulty": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    }
+  },
+  "progress": {
+    "studied": "studied",
+    "resetProgress": "Reset my progress",
+    "resetConfirm": "Are you sure? This will clear all your progress."
+  },
+  "pages": {
+    "faq": "FAQ",
+    "about": "About",
+    "contribute": "How to Contribute",
+    "contact": "Contact",
+    "support": "Support the Project",
+    "storytelling": "StoryTelling Guide"
+  },
+  "footer": {
+    "openSource": "Open source on GitHub",
+    "madeWith": "Made with ❤️ for developers"
+  }
+}

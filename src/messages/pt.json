@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "questions": "Perguntas",
+    "storytelling": "StoryTelling",
+    "contribute": "Contribuir",
+    "support": "Apoie",
+    "about": "Sobre"
+  },
+  "home": {
+    "title": "CodeQuestions",
+    "tagline": "Domine sua entrevista técnica. Uma pergunta por vez.",
+    "browse": "Ver Perguntas",
+    "contribute": "Contribuir",
+    "howItWorks": "Como funciona",
+    "step1Title": "Estude",
+    "step1Desc": "Leia respostas completas para as perguntas mais feitas em entrevistas.",
+    "step2Title": "Teste-se",
+    "step2Desc": "Use os flashcards para checar o que você realmente sabe.",
+    "step3Title": "Contribua",
+    "step3Desc": "Adicione perguntas via Pull Request. É open source."
+  },
+  "categories": {
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "devops": "DevOps",
+    "data": "Dados",
+    "soft-skills": "Soft Skills",
+    "architecture": "Arquitetura",
+    "security": "Segurança"
+  },
+  "question": {
+    "fullAnswer": "Resposta Completa",
+    "quickAnswer": "Resposta Rápida para o Entrevistador",
+    "flashcard": "Flashcard",
+    "clickToFlip": "Clique para revelar a resposta",
+    "gotIt": "Sei!",
+    "needReview": "Preciso estudar",
+    "difficulty": {
+      "beginner": "Iniciante",
+      "intermediate": "Intermediário",
+      "advanced": "Avançado"
+    }
+  },
+  "progress": {
+    "studied": "estudadas",
+    "resetProgress": "Resetar meu progresso",
+    "resetConfirm": "Tem certeza? Isso vai apagar todo o seu progresso."
+  },
+  "pages": {
+    "faq": "FAQ",
+    "about": "Sobre",
+    "contribute": "Como Contribuir",
+    "contact": "Contato",
+    "support": "Apoie o Projeto",
+    "storytelling": "Guia de StoryTelling"
+  },
+  "footer": {
+    "openSource": "Open source no GitHub",
+    "madeWith": "Feito com ❤️ para desenvolvedores"
+  }
+}
