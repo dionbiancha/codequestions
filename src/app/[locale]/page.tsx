@@ -42,8 +42,11 @@ export default async function HomePage() {
       {/* Hero */}
       <section className="relative text-center mb-24 pt-8 pb-4">
         {/* Glow */}
-        <div className="absolute inset-x-0 top-0 h-72 flex items-start justify-center pointer-events-none overflow-hidden">
-          <div className="w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-3xl translate-y-8" />
+        <div
+          className="absolute inset-0 flex items-start justify-center pointer-events-none"
+          style={{ maskImage: 'radial-gradient(ellipse 70% 60% at 50% 35%, black, transparent)' }}
+        >
+          <div className="w-[600px] h-[320px] bg-blue-600/15 rounded-full blur-3xl translate-y-4" />
         </div>
 
         <div className="relative">
