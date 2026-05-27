@@ -38,7 +38,10 @@
       "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\dionb\\\\Repository\\\\codequestions\" -Exclude \"node_modules\",\".next\" -Recurse -Depth 4 | Where-Object { $_.FullName -notmatch \"node_modules|\\\\.next\" } | Select-Object -ExpandProperty FullName)",
       "Bash(git checkout *)",
       "Bash(cd /mnt/c/Users/dionb/Repository/codequestions && node scripts/validate-content.mjs 2>&1 | tail -20)",
-      "Read(//mnt/c/Users/dionb/Repository/**)"
+      "Read(//mnt/c/Users/dionb/Repository/**)",
+      "Bash(node -e \"const l = require\\('./package-lock.json'\\); const keys = Object.keys\\(l.packages\\).filter\\(k => k.includes\\('rolldown'\\) || k.includes\\('binding'\\)\\); console.log\\(keys.join\\('\\\\n'\\)\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const d=require\\('/dev/stdin'\\); console.log\\(JSON.stringify\\({deps:d.dependencies, dev:d.devDependencies, opt:d.optionalDependencies}, null, 2\\)\\)\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\dionb\\Repository\\codequestions\\src\\app\\[locale]\\questions\\[category]",
