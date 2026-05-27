@@ -3,7 +3,9 @@ import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
-import remarkHtml from 'remark-html'
+import remarkRehype from 'remark-rehype'
+import rehypeShiki from '@shikijs/rehype'
+import rehypeStringify from 'rehype-stringify'
 
 export type Difficulty = 'beginner' | 'intermediate' | 'advanced'
 
@@ -75,7 +77,17 @@ export function buildQuestionMeta(
 }
 
 export async function mdToHtml(markdown: string): Promise<string> {
-  const result = await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(markdown)
+  const result = await remark()
+    .use(remarkGfm)
+    .use(remarkRehype)
+    .use(rehypeShiki, {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+    })
+    .use(rehypeStringify)
+    .process(markdown)
   return result.toString()
 }
 
