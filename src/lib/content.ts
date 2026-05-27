@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
+import remarkGfm from 'remark-gfm'
 import remarkHtml from 'remark-html'
 
 export type Difficulty = 'beginner' | 'intermediate' | 'advanced'
@@ -74,7 +75,7 @@ export function buildQuestionMeta(
 }
 
 export async function mdToHtml(markdown: string): Promise<string> {
-  const result = await remark().use(remarkHtml, { sanitize: false }).process(markdown)
+  const result = await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(markdown)
   return result.toString()
 }
 
