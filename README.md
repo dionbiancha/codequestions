@@ -1,36 +1,209 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# codequestions
+
+> Open-source interview prep portal for developers. Curated questions, complete answers, flashcards, and progress tracking — no login required.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Deploy](https://img.shields.io/badge/deployed-Vercel-black?logo=vercel)](https://codequestions.vercel.app)
+
+---
+
+## Features
+
+- **Curated questions** organized by category (Frontend, Backend, DevOps, Data, Architecture, Security, Soft Skills)
+- **Split-view layout** — full study answer on the left, quick interviewer answer + flashcard on the right
+- **3D flip flashcards** with "Got it / Need more study" buttons
+- **Progress tracking** stored in `localStorage` — no account needed
+- **Dark / light theme** toggle, dark by default
+- **Bilingual** — English and Portuguese, auto-detected from browser language
+- **Fully static** — no database, no backend, deploys to Vercel free tier
+- **Markdown-based content** — contribute a question by editing a `.md` file and opening a PR
+
+---
+
+## Tech Stack
+
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| Content | gray-matter + remark + remark-html |
+| i18n | next-intl |
+| Progress | localStorage |
+| Testing | Vitest + Testing Library |
+| Deployment | Vercel |
+
+---
 
 ## Getting Started
 
-First, run the development server:
+**Prerequisites:** Node.js 18+
 
 ```bash
+git clone https://github.com/dionbiancha/codequestions.git
+cd codequestions
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm test          # run tests
+npm run build     # production build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Adding Questions (Contributing)
 
-To learn more about Next.js, take a look at the following resources:
+All content lives in `.md` files. Contributing is as simple as adding a file and opening a Pull Request — no code changes required.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 1. Fork and create a branch
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+git checkout -b add/frontend-javascript-closures
+```
 
-## Deploy on Vercel
+### 2. Create the file
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Place the file under `src/content/<locale>/<category>/<subcategory>/<slug>.md`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/content/
+  en/
+    frontend/
+      javascript/
+        closures.md       ← your new file
+      react/
+    backend/
+      node/
+    soft-skills/
+  pt/
+    frontend/
+      javascript/
+        closures.md       ← optional Portuguese translation
+```
+
+### 3. Write the frontmatter
+
+```yaml
+---
+title: "What is a closure in JavaScript?"
+category: frontend
+subcategory: javascript
+tags: [closures, scope, functions]
+difficulty: intermediate   # beginner | intermediate | advanced
+lang: en
+---
+```
+
+| Field | Required | Values |
+|---|---|---|
+| `title` | yes | Full question text |
+| `category` | yes | `frontend` `backend` `devops` `data` `soft-skills` `architecture` `security` |
+| `subcategory` | yes | e.g. `javascript`, `react`, `node`, `docker` |
+| `tags` | yes | Array of relevant keywords |
+| `difficulty` | yes | `beginner` `intermediate` `advanced` |
+| `lang` | yes | `en` or `pt` |
+
+### 4. Write the three required sections
+
+```markdown
+## Full Answer
+
+Complete explanation for deep study. Use code blocks, lists, and examples freely.
+
+## Quick Answer
+
+One or two sentences suitable for saying out loud to an interviewer.
+
+## Flashcard
+
+**Q:** The question restated concisely.
+
+**A:** A short answer that fits on the back of a card.
+```
+
+### 5. Open a Pull Request
+
+- Target the `main` branch
+- Title format: `feat: add <category>/<subcategory>/<slug>`
+- A PR with only one language is accepted — bilingual is welcome but not required
+- CI validates the frontmatter schema automatically
+
+---
+
+## Categories
+
+| Slug | Display Name |
+|---|---|
+| `frontend` | Frontend |
+| `backend` | Backend |
+| `devops` | DevOps |
+| `data` | Data |
+| `soft-skills` | Soft Skills |
+| `architecture` | Software Architecture |
+| `security` | Security |
+
+---
+
+## Project Structure
+
+```
+src/
+  app/
+    [locale]/
+      page.tsx                  home
+      questions/
+        page.tsx                category hub
+        [category]/
+          page.tsx              question list
+          [slug]/page.tsx       question detail (split view)
+      storytelling/page.tsx
+      contribute/page.tsx
+  components/
+    layout/
+      Header.tsx                nav + locale switcher + theme toggle
+      Footer.tsx
+    questions/
+      CategoryCard.tsx
+      QuestionCard.tsx
+      QuestionSplitView.tsx     split view wrapper
+      FlashCard.tsx             3D flip card
+      ProgressBadge.tsx
+    ui/
+      Badge.tsx
+      Button.tsx
+      MarkdownRenderer.tsx
+  lib/
+    content.ts                  reads and parses .md files
+    progress.ts                 localStorage helpers
+    categories.ts               category metadata
+  content/
+    en/                         English questions
+    pt/                         Portuguese questions
+  messages/
+    en.json                     UI strings (English)
+    pt.json                     UI strings (Portuguese)
+```
+
+---
+
+## Content Guidelines
+
+- Answers should be accurate and concise — avoid padding
+- Code blocks must specify a language (` ```js `, ` ```bash `, etc.)
+- Quick Answer should be speakable in under 20 seconds
+- Flashcard front and back should make sense independently (no "see above")
+- Avoid duplicating existing questions — check the category page first
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+---
+
+Made with ❤️ for developers. [Open an issue](https://github.com/dionbiancha/codequestions/issues) to suggest a question or report a problem.
