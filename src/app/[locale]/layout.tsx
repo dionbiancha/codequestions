@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { BottomNav } from '@/components/layout/BottomNav'
 
 type Props = {
   children: React.ReactNode
@@ -18,10 +19,11 @@ export default async function LocaleLayout({ children, params }: Props) {
     <NextIntlClientProvider messages={messages}>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-1">
+        <main className="flex-1 pb-20 md:pb-0">
           {children}
         </main>
         <Footer />
+        <BottomNav />
       </div>
     </NextIntlClientProvider>
   )
