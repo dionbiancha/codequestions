@@ -43,7 +43,7 @@ export default async function HomePage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-16">
       {/* Hero */}
-      <section className="relative text-center mb-24 pt-8 pb-4">
+      <section className="relative text-center mb-24 pt-8 pb-4 overflow-hidden">
         {/* Glow */}
         <div
           className="absolute inset-0 flex items-start justify-center pointer-events-none"
@@ -63,7 +63,7 @@ export default async function HomePage() {
           </div>
 
           {/* Title */}
-          <h1 className="font-mono text-6xl font-bold mb-8 leading-none tracking-tight">
+          <h1 className="font-mono text-4xl sm:text-6xl font-bold mb-8 leading-none tracking-tight">
             <span className="text-dark-heading">code</span>
             <span className="text-blue-400">questions</span>
           </h1>
