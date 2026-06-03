@@ -12,6 +12,20 @@ type ChangelogEntry = {
 const CHANGELOG: ChangelogEntry[] = [
   {
     date: '2026-06-03',
+    version: '1.6.0',
+    title: 'Global navigation progress bar & loading skeletons',
+    titlePt: 'Barra de progresso global e skeletons de carregamento',
+    points: [
+      'Added a blue progress bar at the top of the page that appears instantly on any link click',
+      'Added loading skeletons to all routes — visual feedback while content loads instead of a blank wait',
+    ],
+    pointsPt: [
+      'Barra de progresso azul no topo da página que aparece instantaneamente em qualquer clique de link',
+      'Skeletons de carregamento em todas as rotas — feedback visual enquanto o conteúdo carrega, sem espera em branco',
+    ],
+  },
+  {
+    date: '2026-06-03',
     version: '1.5.0',
     title: 'Instant navigation across all pages',
     titlePt: 'Navegação instantânea em todas as páginas',
