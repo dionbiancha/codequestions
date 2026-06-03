@@ -25,9 +25,10 @@ export async function generateStaticParams() {
 }
 
 const difficultyVariant: Record<string, 'blue' | 'green' | 'orange'> = {
-  beginner: 'green',
-  intermediate: 'blue',
-  advanced: 'orange',
+  junior: 'green',
+  pleno: 'blue',
+  senior: 'orange',
+  especialista: 'orange',
 }
 
 function extractFlashcardParts(flashcardHtml: string): { front: string; back: string } {

@@ -10,9 +10,10 @@ import { QuestionCard } from './QuestionCard'
 import type { QuestionMeta } from '@/lib/content'
 
 const difficultyVariant: Record<string, 'blue' | 'green' | 'orange'> = {
-  beginner: 'green',
-  intermediate: 'blue',
-  advanced: 'orange',
+  junior: 'green',
+  pleno: 'blue',
+  senior: 'orange',
+  especialista: 'orange',
 }
 
 function RandomCard({ question, onClose }: {
@@ -21,6 +22,7 @@ function RandomCard({ question, onClose }: {
 }) {
   const locale = useLocale()
   const t = useTranslations('categories')
+  const tQuestion = useTranslations('question')
   const [status, setStatus] = useState<'known' | 'review' | null>(null)
   const [revealed, setRevealed] = useState(false)
 
@@ -47,7 +49,7 @@ function RandomCard({ question, onClose }: {
       <div className="p-5">
         <div className="flex items-center gap-2 mb-3 flex-wrap">
           <Badge variant={difficultyVariant[question.difficulty] ?? 'gray'}>
-            {question.difficulty}
+            {tQuestion(`difficulty.${question.difficulty}`)}
           </Badge>
           {question.tags.slice(0, 4).map(tag => (
             <Badge key={tag} variant="gray">{tag}</Badge>
