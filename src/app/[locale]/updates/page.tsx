@@ -12,6 +12,24 @@ type ChangelogEntry = {
 const CHANGELOG: ChangelogEntry[] = [
   {
     date: '2026-06-03',
+    version: '1.7.0',
+    title: 'Fix: blank page on navigation — stay on current page while loading',
+    titlePt: 'Correção: tela em branco na navegação — permanece na página atual durante o carregamento',
+    points: [
+      'Fixed blank page bug caused by loading skeletons hiding content for 3 seconds',
+      'Current page now stays visible while the next page loads — no more empty screen on click',
+      'Skeleton overlay appears only after 5 seconds of loading, covering the current page',
+      'Progress bar animates over the full 5-second window before skeleton is shown',
+    ],
+    pointsPt: [
+      'Corrigido bug de tela em branco causado pelos skeletons escondendo o conteúdo por 3 segundos',
+      'A página atual agora permanece visível enquanto a próxima página carrega — sem tela em branco ao clicar',
+      'Skeleton de carregamento aparece apenas após 5 segundos, cobrindo a página atual',
+      'Barra de progresso anima durante toda a janela de 5 segundos antes do skeleton ser exibido',
+    ],
+  },
+  {
+    date: '2026-06-03',
     version: '1.6.0',
     title: 'Global navigation progress bar & smart loading skeletons',
     titlePt: 'Barra de progresso global e skeletons de carregamento inteligentes',
