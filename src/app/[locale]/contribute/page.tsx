@@ -128,6 +128,10 @@ Faça push do seu branch e abra um PR contra \`main\`. Um mantenedor vai revisar
 - Seja respeitoso e preciso — cite fontes quando relevante
 `
 
+export async function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'pt' }]
+}
+
 export default async function ContributePage() {
   const t = await getTranslations('pages')
   const locale = await getLocale()

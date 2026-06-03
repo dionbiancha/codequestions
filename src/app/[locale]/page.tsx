@@ -4,6 +4,10 @@ import Image from "next/image";
 import { CATEGORIES } from "@/lib/categories";
 import { getContributors } from "@/lib/contributors";
 
+export async function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'pt' }]
+}
+
 export default async function HomePage() {
   const t = await getTranslations("home");
   const locale = await getLocale();

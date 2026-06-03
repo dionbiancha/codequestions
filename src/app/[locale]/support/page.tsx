@@ -1,6 +1,10 @@
 import { getTranslations, getLocale } from 'next-intl/server'
 import { PixQRCode } from '@/components/ui/PixQRCode'
 
+export async function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'pt' }]
+}
+
 export default async function SupportPage() {
   const t = await getTranslations('pages')
   const locale = await getLocale()

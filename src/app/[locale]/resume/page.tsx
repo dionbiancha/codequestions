@@ -204,6 +204,10 @@ const TEXT: Record<Lang, Record<string, string | string[]>> = {
   },
 }
 
+export async function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'pt' }]
+}
+
 export default async function ResumePage() {
   const locale = await getLocale() as Lang
   const t = await getTranslations('pages')

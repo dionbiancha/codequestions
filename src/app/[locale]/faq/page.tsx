@@ -54,6 +54,10 @@ Seu progresso de estudo (Sei! / Preciso estudar) é salvo localmente no seu nave
 Visite a página [Apoie](/pt/support). Contribuições via GitHub Sponsors, Ko-fi ou Pix são muito apreciadas.
 `
 
+export async function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'pt' }]
+}
+
 export default async function FaqPage() {
   const t = await getTranslations('pages')
   const locale = await getLocale()

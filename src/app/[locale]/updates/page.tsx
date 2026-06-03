@@ -104,6 +104,10 @@ const CHANGELOG: ChangelogEntry[] = [
   },
 ]
 
+export async function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'pt' }]
+}
+
 export default async function UpdatesPage() {
   const t = await getTranslations('pages')
   const locale = await getLocale()

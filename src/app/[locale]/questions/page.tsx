@@ -3,6 +3,10 @@ import { CATEGORIES } from '@/lib/categories'
 import { getAllQuestionMeta } from '@/lib/content'
 import { CategoryCard } from '@/components/questions/CategoryCard'
 
+export async function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'pt' }]
+}
+
 export default async function QuestionsPage() {
   const t = await getTranslations()
   const locale = await getLocale()

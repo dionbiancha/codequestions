@@ -48,6 +48,10 @@ Porque o melhor conteúdo vem de pessoas que estiveram na sala. Todo desenvolved
 - **Apoiar o projeto:** [Página de apoio](/pt/support)
 `
 
+export async function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'pt' }]
+}
+
 export default async function AboutPage() {
   const t = await getTranslations('pages')
   const locale = await getLocale()
