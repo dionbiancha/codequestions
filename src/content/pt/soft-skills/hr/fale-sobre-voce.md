@@ -3,7 +3,7 @@ title: "Como responder 'Fale sobre você'?"
 category: soft-skills
 subcategory: hr
 tags: [rh, storytelling, intro, pitch, comportamental]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 

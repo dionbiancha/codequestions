@@ -3,7 +3,7 @@ title: "What are React Hooks and why were they introduced?"
 category: frontend
 subcategory: react
 tags: [hooks, useState, useEffect, functional-components]
-difficulty: beginner
+difficulty: junior
 lang: en
 ---
 

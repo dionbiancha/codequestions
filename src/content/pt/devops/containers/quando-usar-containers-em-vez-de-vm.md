@@ -3,7 +3,7 @@ title: "Quando usar containers em vez de máquinas virtuais?"
 category: devops
 subcategory: containers
 tags: [docker, containers, virtual-machines, infraestrutura]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

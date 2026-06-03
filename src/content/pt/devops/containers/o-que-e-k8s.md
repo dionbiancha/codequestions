@@ -3,7 +3,7 @@ title: "O que é Kubernetes?"
 category: devops
 subcategory: orchestration
 tags: [kubernetes, k8s, containers, orquestração]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

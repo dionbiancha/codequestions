@@ -3,7 +3,7 @@ title: "O que é um componente no React?"
 category: frontend
 subcategory: react
 tags: [componente, props, JSX, functional-components]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 

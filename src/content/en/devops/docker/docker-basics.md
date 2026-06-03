@@ -3,7 +3,7 @@ title: "What is Docker and why is it used?"
 category: devops
 subcategory: docker
 tags: [docker, containers, devops, deployment, images]
-difficulty: beginner
+difficulty: junior
 lang: en
 ---
 

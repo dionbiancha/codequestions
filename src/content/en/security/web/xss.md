@@ -3,7 +3,7 @@ title: "What is Cross-Site Scripting (XSS) and how do you prevent it?"
 category: security
 subcategory: web
 tags: [xss, security, injection, csrf, sanitization]
-difficulty: intermediate
+difficulty: pleno
 lang: en
 ---
 

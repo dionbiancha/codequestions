@@ -3,7 +3,7 @@ title: "How do you answer \"Tell me about yourself\"?"
 category: soft-skills
 subcategory: hr
 tags: [hr, storytelling, intro, pitch, behavioral]
-difficulty: beginner
+difficulty: junior
 lang: en
 ---
 

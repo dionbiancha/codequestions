@@ -3,7 +3,7 @@ title: "Explique o que é GraphQL"
 category: backend
 subcategory: general
 tags: [graphql, api, query, schema, rest, tipos]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

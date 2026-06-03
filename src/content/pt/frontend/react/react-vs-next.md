@@ -3,7 +3,7 @@ title: "Qual a diferença entre React e Next.js?"
 category: frontend
 subcategory: react
 tags: [react, nextjs, ssr, ssg, framework, spa]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 

@@ -3,7 +3,7 @@ title: "O que é estado no React?"
 category: frontend
 subcategory: react
 tags: [state, hooks, useState, re-render]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 

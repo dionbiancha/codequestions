@@ -3,7 +3,7 @@ title: "O que são propriedades no React?"
 category: frontend
 subcategory: react
 tags: [props, typescript, componentes, imutabilidade]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 

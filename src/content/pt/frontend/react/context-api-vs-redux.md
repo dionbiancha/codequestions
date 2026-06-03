@@ -3,7 +3,7 @@ title: "Qual a diferença entre Context API e Redux no gerenciamento de estado?"
 category: frontend
 subcategory: react
 tags: [react, context, redux, estado, gerenciamento, performance]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

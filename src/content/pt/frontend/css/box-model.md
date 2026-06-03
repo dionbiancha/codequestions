@@ -3,7 +3,7 @@ title: "O que é o Box Model do CSS?"
 category: frontend
 subcategory: css
 tags: [css, box-model, layout, margin, padding]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 

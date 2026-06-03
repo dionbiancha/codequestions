@@ -3,7 +3,7 @@ title: "Explique o ciclo de vida do React"
 category: frontend
 subcategory: react
 tags: [lifecycle, useEffect, hooks, montagem, desmontagem]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 
