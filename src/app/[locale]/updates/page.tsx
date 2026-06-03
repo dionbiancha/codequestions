@@ -12,6 +12,26 @@ type ChangelogEntry = {
 const CHANGELOG: ChangelogEntry[] = [
   {
     date: '2026-06-03',
+    version: '1.4.0',
+    title: 'Filter redesign: seniority pills & tag search',
+    titlePt: 'Filtros redesenhados: pills de nível e busca de tags',
+    points: [
+      'Replaced flat tag button list with a search input — type to filter, click to add as chip',
+      'Added seniority level filter pills (Junior / Mid-level / Senior / Specialist) with multi-select',
+      'Filter logic: level AND tags — questions must match both active filters',
+      'Keyboard shortcuts: Enter selects top suggestion, Escape clears input, Backspace removes last chip',
+      'Clear all filters with one click',
+    ],
+    pointsPt: [
+      'Lista gigante de botões de tag substituída por input de busca — digite para filtrar, clique para adicionar como chip',
+      'Filtro de nível de senioridade com pills multi-seleção (Júnior / Pleno / Sênior / Especialista)',
+      'Lógica combinada: nível E tags — questões aparecem quando atendem ambos os filtros ativos',
+      'Atalhos de teclado: Enter seleciona primeira sugestão, Escape limpa o input, Backspace remove último chip',
+      'Limpar todos os filtros com um clique',
+    ],
+  },
+  {
+    date: '2026-06-03',
     version: '1.3.0',
     title: 'Seniority levels & Updates page',
     titlePt: 'Níveis de senioridade e página de Atualizações',
