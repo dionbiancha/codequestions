@@ -13,15 +13,17 @@ const CHANGELOG: ChangelogEntry[] = [
   {
     date: '2026-06-03',
     version: '1.6.0',
-    title: 'Global navigation progress bar & loading skeletons',
-    titlePt: 'Barra de progresso global e skeletons de carregamento',
+    title: 'Global navigation progress bar & smart loading skeletons',
+    titlePt: 'Barra de progresso global e skeletons de carregamento inteligentes',
     points: [
       'Added a blue progress bar at the top of the page that appears instantly on any link click',
-      'Added loading skeletons to all routes — visual feedback while content loads instead of a blank wait',
+      'Added loading skeletons to all routes — shown only if loading takes longer than 3 seconds',
+      'Fast navigations (under 3s) show only the progress bar — no skeleton flash',
     ],
     pointsPt: [
       'Barra de progresso azul no topo da página que aparece instantaneamente em qualquer clique de link',
-      'Skeletons de carregamento em todas as rotas — feedback visual enquanto o conteúdo carrega, sem espera em branco',
+      'Skeletons de carregamento em todas as rotas — exibidos apenas se o carregamento demorar mais de 3 segundos',
+      'Navegações rápidas (menos de 3s) exibem apenas a barra — sem flash de skeleton desnecessário',
     ],
   },
   {
