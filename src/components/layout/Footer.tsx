@@ -95,6 +95,14 @@ export function Footer() {
                   {nav("contribute")}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href={`/${locale}/updates`}
+                  className="text-sm text-dark-text hover:text-dark-heading transition-colors"
+                >
+                  {nav("updates")}
+                </Link>
+              </li>
             </ul>
           </div>
 
