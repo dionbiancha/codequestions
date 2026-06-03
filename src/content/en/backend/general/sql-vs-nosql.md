@@ -3,7 +3,7 @@ title: "What is the difference between SQL and NoSQL databases?"
 category: backend
 subcategory: general
 tags: [database, sql, nosql, relational, mongodb, postgres]
-difficulty: intermediate
+difficulty: pleno
 lang: en
 ---
 

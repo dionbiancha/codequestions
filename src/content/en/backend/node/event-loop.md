@@ -3,7 +3,7 @@ title: "How does the Node.js event loop work?"
 category: backend
 subcategory: node
 tags: [event-loop, async, non-blocking, libuv]
-difficulty: intermediate
+difficulty: pleno
 lang: en
 ---
 

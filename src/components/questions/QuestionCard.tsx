@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { getQuestionStatus } from '@/lib/progress'
 import { Badge } from '@/components/ui/Badge'
@@ -12,13 +12,15 @@ type Props = {
 }
 
 const difficultyVariant: Record<string, 'blue' | 'green' | 'orange'> = {
-  beginner: 'green',
-  intermediate: 'blue',
-  advanced: 'orange',
+  junior: 'green',
+  pleno: 'blue',
+  senior: 'orange',
+  especialista: 'orange',
 }
 
 export function QuestionCard({ question }: Props) {
   const locale = useLocale()
+  const t = useTranslations('question')
   const [status, setStatus] = useState<'known' | 'review' | null>(null)
 
   useEffect(() => {
@@ -37,7 +39,7 @@ export function QuestionCard({ question }: Props) {
           </h3>
           <div className="flex items-center gap-2 mt-2 flex-wrap">
             <Badge variant={difficultyVariant[question.difficulty] ?? 'gray'}>
-              {question.difficulty}
+              {t(`difficulty.${question.difficulty}`)}
             </Badge>
             {question.tags.slice(0, 3).map(tag => (
               <Badge key={tag} variant="gray">{tag}</Badge>

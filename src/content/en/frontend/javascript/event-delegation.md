@@ -3,7 +3,7 @@ title: "What is event delegation?"
 category: frontend
 subcategory: javascript
 tags: [dom, events, performance, bubbling]
-difficulty: intermediate
+difficulty: pleno
 lang: en
 ---
 

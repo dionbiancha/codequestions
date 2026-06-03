@@ -3,7 +3,7 @@ title: "O que são os princípios SOLID?"
 category: architecture
 subcategory: solid
 tags: [solid, oop, design-principles, clean-code]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

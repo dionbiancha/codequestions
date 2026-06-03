@@ -3,7 +3,7 @@ title: "What is the difference between controlled and uncontrolled components in
 category: frontend
 subcategory: react
 tags: [react, forms, controlled, uncontrolled, state]
-difficulty: intermediate
+difficulty: pleno
 lang: en
 ---
 

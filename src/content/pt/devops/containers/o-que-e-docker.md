@@ -3,7 +3,7 @@ title: "O que é Docker?"
 category: devops
 subcategory: containers
 tags: [docker, containers, virtualização]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 

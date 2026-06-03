@@ -3,7 +3,7 @@ title: "Explique o que é REST"
 category: backend
 subcategory: general
 tags: [rest, api, http, stateless, web, arquitetura]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 

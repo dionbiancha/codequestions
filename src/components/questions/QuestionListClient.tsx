@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useCallback } from 'react'
+import { useState, useMemo, useCallback, useRef } from 'react'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 import { useEffect } from 'react'
@@ -9,10 +9,13 @@ import { Badge } from '@/components/ui/Badge'
 import { QuestionCard } from './QuestionCard'
 import type { QuestionMeta } from '@/lib/content'
 
+const LEVELS = ['junior', 'pleno', 'senior', 'especialista'] as const
+
 const difficultyVariant: Record<string, 'blue' | 'green' | 'orange'> = {
-  beginner: 'green',
-  intermediate: 'blue',
-  advanced: 'orange',
+  junior: 'green',
+  pleno: 'blue',
+  senior: 'orange',
+  especialista: 'orange',
 }
 
 function RandomCard({ question, onClose }: {
@@ -21,6 +24,7 @@ function RandomCard({ question, onClose }: {
 }) {
   const locale = useLocale()
   const t = useTranslations('categories')
+  const tQuestion = useTranslations('question')
   const [status, setStatus] = useState<'known' | 'review' | null>(null)
   const [revealed, setRevealed] = useState(false)
 
@@ -47,7 +51,7 @@ function RandomCard({ question, onClose }: {
       <div className="p-5">
         <div className="flex items-center gap-2 mb-3 flex-wrap">
           <Badge variant={difficultyVariant[question.difficulty] ?? 'gray'}>
-            {question.difficulty}
+            {tQuestion(`difficulty.${question.difficulty}`)}
           </Badge>
           {question.tags.slice(0, 4).map(tag => (
             <Badge key={tag} variant="gray">{tag}</Badge>
@@ -96,10 +100,16 @@ type Props = {
 
 export function QuestionListClient({ questions }: Props) {
   const t = useTranslations('categories')
+  const tQuestion = useTranslations('question')
 
   const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const [selectedLevels, setSelectedLevels] = useState<string[]>([])
+  const [tagInput, setTagInput] = useState('')
+  const [tagFocused, setTagFocused] = useState(false)
   const [randomQuestion, setRandomQuestion] = useState<QuestionMeta | null>(null)
   const [seenSlugs, setSeenSlugs] = useState<Set<string>>(new Set())
+
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const allTags = useMemo(() => {
     const set = new Set<string>()
@@ -107,10 +117,29 @@ export function QuestionListClient({ questions }: Props) {
     return Array.from(set).sort()
   }, [questions])
 
+  const tagSuggestions = useMemo(() => {
+    if (!tagInput) return []
+    const lower = tagInput.toLowerCase()
+    return allTags
+      .filter(t => !selectedTags.includes(t) && t.toLowerCase().includes(lower))
+      .slice(0, 8)
+  }, [allTags, selectedTags, tagInput])
+
   const filtered = useMemo(() => {
-    if (selectedTags.length === 0) return questions
-    return questions.filter(q => selectedTags.some(tag => q.tags.includes(tag)))
-  }, [questions, selectedTags])
+    return questions.filter(q => {
+      const levelMatch = selectedLevels.length === 0 || selectedLevels.includes(q.difficulty)
+      const tagMatch = selectedTags.length === 0 || selectedTags.some(tag => q.tags.includes(tag))
+      return levelMatch && tagMatch
+    })
+  }, [questions, selectedLevels, selectedTags])
+
+  const toggleLevel = (level: string) => {
+    setSelectedLevels(prev =>
+      prev.includes(level) ? prev.filter(l => l !== level) : [...prev, level]
+    )
+    setRandomQuestion(null)
+    setSeenSlugs(new Set())
+  }
 
   const toggleTag = (tag: string) => {
     setSelectedTags(prev =>
@@ -120,10 +149,35 @@ export function QuestionListClient({ questions }: Props) {
     setSeenSlugs(new Set())
   }
 
+  const addTag = (tag: string) => {
+    if (!selectedTags.includes(tag)) {
+      setSelectedTags(prev => [...prev, tag])
+      setRandomQuestion(null)
+      setSeenSlugs(new Set())
+    }
+    setTagInput('')
+    inputRef.current?.focus()
+  }
+
   const clearFilters = () => {
     setSelectedTags([])
+    setSelectedLevels([])
+    setTagInput('')
     setRandomQuestion(null)
     setSeenSlugs(new Set())
+  }
+
+  const handleTagKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && tagSuggestions.length > 0) {
+      e.preventDefault()
+      addTag(tagSuggestions[0])
+    }
+    if (e.key === 'Escape') {
+      setTagInput('')
+    }
+    if (e.key === 'Backspace' && tagInput === '' && selectedTags.length > 0) {
+      setSelectedTags(prev => prev.slice(0, -1))
+    }
   }
 
   const pickRandom = useCallback(() => {
@@ -144,33 +198,83 @@ export function QuestionListClient({ questions }: Props) {
     setSeenSlugs(new Set())
   }
 
-  const isFiltering = selectedTags.length > 0
+  const isFiltering = selectedTags.length > 0 || selectedLevels.length > 0
 
   return (
     <div>
-      {/* Tag filter bar */}
-      {allTags.length > 0 && (
-        <div className="mb-6">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-mono text-dark-muted uppercase tracking-widest mr-1">
-              {t('filterLabel')}
+      {/* Level filter */}
+      <div className="mb-4">
+        <div className="flex items-center gap-2 flex-wrap">
+          <span className="text-xs font-mono text-dark-muted uppercase tracking-widest mr-1">
+            {t('filterLabel')}
+          </span>
+          {LEVELS.map(level => {
+            const active = selectedLevels.includes(level)
+            return (
+              <button
+                key={level}
+                onClick={() => toggleLevel(level)}
+                className={`text-xs font-mono px-2.5 py-1 rounded-full border transition-colors ${
+                  active
+                    ? 'border-green-500 text-green-400 bg-green-500/10'
+                    : 'border-dark-border text-dark-muted hover:border-green-500/50 hover:text-dark-heading'
+                }`}
+              >
+                {active && '✓ '}{tQuestion(`difficulty.${level}`)}
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Tag search */}
+      <div className="mb-5 relative">
+        <div
+          className="flex flex-wrap gap-1.5 items-center p-2 bg-dark-surface border border-dark-border rounded-lg focus-within:border-blue-500/50 transition-colors cursor-text"
+          onClick={() => inputRef.current?.focus()}
+        >
+          {selectedTags.map(tag => (
+            <span
+              key={tag}
+              className="inline-flex items-center gap-1 text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded px-2 py-0.5"
+            >
+              {tag}
+              <button
+                onMouseDown={(e) => { e.preventDefault(); toggleTag(tag) }}
+                className="hover:text-blue-300 leading-none"
+                aria-label={`Remove ${tag}`}
+              >
+                ×
+              </button>
             </span>
-            {allTags.map(tag => (
+          ))}
+          <input
+            ref={inputRef}
+            value={tagInput}
+            onChange={e => setTagInput(e.target.value)}
+            onKeyDown={handleTagKeyDown}
+            onFocus={() => setTagFocused(true)}
+            onBlur={() => setTagFocused(false)}
+            placeholder={selectedTags.length === 0 ? t('searchTags') : ''}
+            className="flex-1 bg-transparent text-sm text-dark-text placeholder-dark-muted outline-none min-w-[120px]"
+          />
+        </div>
+
+        {/* Dropdown */}
+        {tagFocused && tagSuggestions.length > 0 && (
+          <div className="absolute top-full mt-1 left-0 right-0 bg-dark-surface border border-dark-border rounded-lg overflow-hidden z-10 shadow-lg">
+            {tagSuggestions.map(tag => (
               <button
                 key={tag}
-                onClick={() => toggleTag(tag)}
-                className={`text-xs font-mono px-2.5 py-1 rounded-full border transition-colors ${
-                  selectedTags.includes(tag)
-                    ? 'border-blue-500 text-blue-400 bg-blue-500/10'
-                    : 'border-dark-border text-dark-muted hover:border-blue-500/50 hover:text-dark-heading'
-                }`}
+                onMouseDown={(e) => { e.preventDefault(); addTag(tag) }}
+                className="w-full text-left px-3 py-2 text-sm text-dark-text hover:bg-dark-border transition-colors"
               >
                 {tag}
               </button>
             ))}
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* Toolbar: count + random button */}
       <div className="flex items-center justify-between mb-5 gap-4">

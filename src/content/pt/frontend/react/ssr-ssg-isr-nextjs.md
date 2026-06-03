@@ -3,7 +3,7 @@ title: "Explique como funciona o conceito de SSR, SSG e ISR no Next.js"
 category: frontend
 subcategory: react
 tags: [nextjs, ssr, ssg, isr, renderização, performance, servidor]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

@@ -3,7 +3,7 @@ title: "Quais estratégias você usaria para otimizar o carregamento de uma pág
 category: frontend
 subcategory: performance
 tags: [performance, web, otimização, cache, lazy-loading, bundle, lcp, core-web-vitals]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

@@ -3,7 +3,7 @@ title: "Qual a diferença entre Docker e Kubernetes?"
 category: devops
 subcategory: containers
 tags: [docker, kubernetes, k8s, containers, orquestração]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

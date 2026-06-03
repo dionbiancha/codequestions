@@ -3,7 +3,7 @@ title: "O que são e como funcionam middlewares no Node.js?"
 category: backend
 subcategory: node
 tags: [middleware, express, nodejs, request, response]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

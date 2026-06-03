@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const CONTENT_DIR = path.join(__dirname, '..', 'src', 'content')
 const REQUIRED_FIELDS = ['title', 'category', 'subcategory', 'tags', 'difficulty', 'lang']
-const VALID_DIFFICULTIES = ['beginner', 'intermediate', 'advanced']
+const VALID_DIFFICULTIES = ['junior', 'pleno', 'senior', 'especialista']
 const VALID_LANGS = ['en', 'pt']
 const REQUIRED_SECTIONS = ['## Full Answer', '## Quick Answer', '## Flashcard']
 

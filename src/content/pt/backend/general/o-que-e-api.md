@@ -3,7 +3,7 @@ title: "O que é uma API?"
 category: backend
 subcategory: general
 tags: [api, http, rest, contrato, integração, web]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 

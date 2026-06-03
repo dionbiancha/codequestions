@@ -3,7 +3,7 @@ title: "O que são `useMemo` e `useCallback`, e quando usá-los?"
 category: frontend
 subcategory: react
 tags: [react, hooks, usememo, usecallback, performance, memoização]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

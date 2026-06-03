@@ -5,7 +5,8 @@
     "resume": "Resume",
     "contribute": "Contribute",
     "support": "Support Us",
-    "about": "About"
+    "about": "About",
+    "updates": "Updates"
   },
   "home": {
     "title": "CodeQuestions",
@@ -39,6 +40,7 @@
     "noQuestions": "No questions yet for this category in this language.",
     "beFirst": "Be the first to contribute →",
     "filterLabel": "Tags",
+    "searchTags": "Search tags...",
     "clearFilters": "Clear filters",
     "questionsTotal": "questions",
     "questionsFiltered": "filtered",
@@ -64,9 +66,10 @@
     "gotIt": "Got it!",
     "needReview": "Need more study",
     "difficulty": {
-      "beginner": "Beginner",
-      "intermediate": "Intermediate",
-      "advanced": "Advanced"
+      "junior": "Junior",
+      "pleno": "Mid-level",
+      "senior": "Senior",
+      "especialista": "Specialist"
     }
   },
   "progress": {
@@ -80,7 +83,8 @@
     "contribute": "How to Contribute",
     "contact": "Contact",
     "support": "Support the Project",
-    "storytelling": "StoryTelling Guide"
+    "storytelling": "StoryTelling Guide",
+    "updates": "Updates"
   },
   "footer": {
     "openSource": "Open source on GitHub",

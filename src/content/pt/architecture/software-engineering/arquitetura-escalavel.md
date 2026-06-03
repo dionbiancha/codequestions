@@ -3,7 +3,7 @@ title: "O que é uma arquitetura escalável?"
 category: architecture
 subcategory: software-engineering
 tags: [escalabilidade, arquitetura, sistemas-distribuidos]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

@@ -3,7 +3,7 @@ title: "Como você abordaria a acessibilidade ao construir uma aplicação?"
 category: frontend
 subcategory: accessibility
 tags: [acessibilidade, a11y, aria, wcag, html-semantico]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

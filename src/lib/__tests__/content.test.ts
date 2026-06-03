@@ -21,7 +21,7 @@ describe('buildQuestionMeta', () => {
       category: 'frontend',
       subcategory: 'javascript',
       tags: ['es6'],
-      difficulty: 'beginner',
+      difficulty: 'junior',
       lang: 'en',
     }
     const meta = buildQuestionMeta('let-const-var', fm)

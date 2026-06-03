@@ -3,7 +3,7 @@ title: "Qual é a diferença entre let, const e var?"
 category: frontend
 subcategory: javascript
 tags: [es6, escopo, hoisting, variaveis]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 
