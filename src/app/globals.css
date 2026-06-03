@@ -12,6 +12,15 @@
   animation: nav-progress 2s cubic-bezier(0.1, 0.4, 0.2, 1) forwards;
 }
 
+@keyframes skeleton-appear {
+  to { opacity: 1; }
+}
+
+.skeleton-delayed {
+  opacity: 0;
+  animation: skeleton-appear 0.3s ease-out 3s forwards;
+}
+
 /* Shiki dual-theme dark mode support */
 .dark .shiki,
 .dark .shiki span {

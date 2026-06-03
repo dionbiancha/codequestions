@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12 animate-pulse">
+    <div className="skeleton-delayed"><div className="max-w-3xl mx-auto px-4 py-12 animate-pulse">
       <div className="h-8 bg-dark-border rounded w-44 mb-3" />
       <div className="h-4 bg-dark-border rounded w-72 mb-10" />
       <div className="flex flex-col gap-6">
@@ -19,6 +19,6 @@ export default function Loading() {
           </div>
         ))}
       </div>
-    </div>
+    </div></div>
   )
 }
