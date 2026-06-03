@@ -7,7 +7,7 @@ import remarkRehype from 'remark-rehype'
 import rehypeShiki from '@shikijs/rehype'
 import rehypeStringify from 'rehype-stringify'
 
-export type Difficulty = 'beginner' | 'intermediate' | 'advanced'
+export type Difficulty = 'junior' | 'pleno' | 'senior' | 'especialista'
 
 export type QuestionMeta = {
   slug: string
@@ -69,7 +69,7 @@ export function buildQuestionMeta(
     category: fm.category as string,
     subcategory: fm.subcategory as string,
     tags: (fm.tags as string[]) ?? [],
-    difficulty: (fm.difficulty as Difficulty) ?? 'intermediate',
+    difficulty: (fm.difficulty as Difficulty) ?? 'pleno',
     lang: fm.lang as string,
     path: `${fm.category}/${fm.subcategory}/${slug}`,
     quickAnswer: stripMarkdown(extractSection(rawContent, 'Quick Answer')),
