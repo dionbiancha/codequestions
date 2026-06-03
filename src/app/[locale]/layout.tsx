@@ -5,6 +5,7 @@ import { routing } from '@/i18n/routing'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { BottomNav } from '@/components/layout/BottomNav'
+import { NavigationProgress } from '@/components/ui/NavigationProgress'
 
 type Props = {
   children: React.ReactNode
@@ -17,6 +18,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages()
   return (
     <NextIntlClientProvider messages={messages}>
+      <NavigationProgress />
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-1 pb-20 md:pb-0">

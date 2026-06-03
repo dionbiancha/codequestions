@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes nav-progress {
+  0%   { transform: translateX(-100%); }
+  60%  { transform: translateX(-20%); }
+  100% { transform: translateX(-20%); }
+}
+
+.nav-progress-bar {
+  animation: nav-progress 2s cubic-bezier(0.1, 0.4, 0.2, 1) forwards;
+}
+
 /* Shiki dual-theme dark mode support */
 .dark .shiki,
 .dark .shiki span {
