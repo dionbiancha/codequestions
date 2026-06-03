@@ -12,6 +12,20 @@ type ChangelogEntry = {
 const CHANGELOG: ChangelogEntry[] = [
   {
     date: '2026-06-03',
+    version: '1.5.0',
+    title: 'Instant navigation across all pages',
+    titlePt: 'Navegação instantânea em todas as páginas',
+    points: [
+      'All pages are now statically generated at build time — navigation is instant instead of waiting for the server',
+      'Added loading skeletons on home and questions routes for immediate visual feedback on slow networks',
+    ],
+    pointsPt: [
+      'Todas as páginas agora são geradas de forma estática no build — navegação instantânea sem esperar o servidor',
+      'Adicionados skeletons de carregamento nas rotas home e questões para feedback visual imediato em redes lentas',
+    ],
+  },
+  {
+    date: '2026-06-03',
     version: '1.4.0',
     title: 'Filter redesign: seniority pills & tag search',
     titlePt: 'Filtros redesenhados: pills de nível e busca de tags',
