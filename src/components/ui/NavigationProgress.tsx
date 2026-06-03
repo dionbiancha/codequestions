@@ -67,8 +67,8 @@ export function NavigationProgress() {
       </div>
 
       {showSkeleton && (
-        <div className="fixed inset-0 z-[199] bg-dark-bg animate-pulse">
-          <div className="max-w-4xl mx-auto px-4 py-16">
+        <div className="fixed inset-0 z-[199] bg-dark-bg">
+          <div className="max-w-4xl mx-auto px-4 py-16 animate-pulse">
             <div className="h-8 bg-dark-border rounded w-52 mb-4" />
             <div className="h-4 bg-dark-border rounded w-72 mb-12" />
             <div className="flex flex-col gap-4">

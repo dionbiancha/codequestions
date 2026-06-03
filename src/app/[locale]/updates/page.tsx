@@ -12,6 +12,20 @@ type ChangelogEntry = {
 const CHANGELOG: ChangelogEntry[] = [
   {
     date: '2026-06-03',
+    version: '1.6.2',
+    title: 'Fix: skeleton overlay flashing and page visible in background',
+    titlePt: 'Correção: skeleton piscando e página aparecendo no fundo',
+    points: [
+      'Fixed skeleton overlay flashing — animate-pulse was applied to the full-screen container, making the background semi-transparent on each pulse cycle',
+      'Fixed current page showing through the skeleton — background is now always fully opaque',
+    ],
+    pointsPt: [
+      'Corrigido skeleton piscando — o animate-pulse estava aplicado no container de tela cheia, deixando o fundo semi-transparente a cada ciclo da animação',
+      'Corrigida página atual aparecendo atrás do skeleton — o fundo agora é sempre totalmente opaco',
+    ],
+  },
+  {
+    date: '2026-06-03',
     version: '1.6.1',
     title: 'Fix: blank page on navigation — stay on current page while loading',
     titlePt: 'Correção: tela em branco na navegação — permanece na página atual durante o carregamento',
