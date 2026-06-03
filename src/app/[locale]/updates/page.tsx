@@ -12,7 +12,7 @@ type ChangelogEntry = {
 const CHANGELOG: ChangelogEntry[] = [
   {
     date: '2026-06-03',
-    version: '1.7.0',
+    version: '1.6.1',
     title: 'Fix: blank page on navigation — stay on current page while loading',
     titlePt: 'Correção: tela em branco na navegação — permanece na página atual durante o carregamento',
     points: [
