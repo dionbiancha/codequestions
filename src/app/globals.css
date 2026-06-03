@@ -4,21 +4,12 @@
 
 @keyframes nav-progress {
   0%   { transform: translateX(-100%); }
-  60%  { transform: translateX(-20%); }
-  100% { transform: translateX(-20%); }
+  50%  { transform: translateX(-30%); }
+  100% { transform: translateX(-10%); }
 }
 
 .nav-progress-bar {
-  animation: nav-progress 2s cubic-bezier(0.1, 0.4, 0.2, 1) forwards;
-}
-
-@keyframes skeleton-appear {
-  to { opacity: 1; }
-}
-
-.skeleton-delayed {
-  opacity: 0;
-  animation: skeleton-appear 0.3s ease-out 3s forwards;
+  animation: nav-progress 5s cubic-bezier(0.05, 0.3, 0.15, 1) forwards;
 }
 
 /* Shiki dual-theme dark mode support */
