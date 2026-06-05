@@ -4,6 +4,7 @@ import { useState, useTransition, useRef, useMemo, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useLocale, useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { CATEGORIES } from '@/lib/categories'
 import { getQuestionsForQuiz } from '@/app/quiz-actions'
 import { startQuiz } from '@/lib/quiz'
@@ -249,22 +250,31 @@ export function QuizSetupPanel({ preselectedCategories, categoryCounts }: Props)
             </div>
 
             {/* Footer */}
-            <div className="flex items-center gap-3 px-6 py-4 border-t border-dark-border rounded-b-xl flex-shrink-0">
-              <button
-                onClick={handleStart}
-                disabled={isPending || categories.length === 0 || maxCount === 0}
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2 rounded-lg transition-colors disabled:opacity-40 disabled:pointer-events-none"
+            <div className="flex items-center justify-between gap-3 px-6 py-4 border-t border-dark-border rounded-b-xl flex-shrink-0">
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handleStart}
+                  disabled={isPending || categories.length === 0 || maxCount === 0}
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2 rounded-lg transition-colors disabled:opacity-40 disabled:pointer-events-none"
+                >
+                  {isPending ? '...' : `${t('start')} →`}
+                </button>
+                {categories.length > 0 && maxCount > 0 && (
+                  <span className="text-xs text-dark-muted">
+                    {availableCount} {t('questionsAvailable')}
+                  </span>
+                )}
+                {noResults && (
+                  <span className="text-xs text-red-400">{t('noQuestionsHint')}</span>
+                )}
+              </div>
+              <Link
+                href={`/${locale}/quiz/history`}
+                onClick={() => setOpen(false)}
+                className="text-xs text-dark-muted hover:text-dark-heading transition-colors"
               >
-                {isPending ? '...' : `${t('start')} →`}
-              </button>
-              {categories.length > 0 && maxCount > 0 && (
-                <span className="text-xs text-dark-muted">
-                  {availableCount} {t('questionsAvailable')}
-                </span>
-              )}
-              {noResults && (
-                <span className="text-xs text-red-400">{t('noQuestionsHint')}</span>
-              )}
+                {t('viewHistory')}
+              </Link>
             </div>
           </div>
         </div>,

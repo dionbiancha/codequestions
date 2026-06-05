@@ -5,7 +5,6 @@ import { useLocale, useTranslations } from "next-intl";
 
 export function Header() {
   const t = useTranslations("nav");
-  const tQuiz = useTranslations("quiz");
   const locale = useLocale();
 
   return (
@@ -24,12 +23,6 @@ export function Header() {
             className="text-sm text-dark-muted hover:text-dark-heading transition-colors"
           >
             {t("questions")}
-          </Link>
-          <Link
-            href={`/${locale}/quiz/history`}
-            className="text-sm text-dark-muted hover:text-dark-heading transition-colors"
-          >
-            {tQuiz("history")}
           </Link>
           <Link
             href={`/${locale}/resume`}
