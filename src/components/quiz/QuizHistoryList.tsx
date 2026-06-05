@@ -54,9 +54,9 @@ export function QuizHistoryList() {
                 <span className="text-xs text-dark-muted">{date}</span>
               </div>
               <div className="flex items-center gap-4 text-xs">
-                <span className="text-green-400">✅ {known}</span>
-                <span className="text-yellow-400">🤔 {partial}</span>
-                <span className="text-red-400">❌ {unknown}</span>
+                <span className="text-green-400">{known} acertei</span>
+                <span className="text-yellow-400">{partial} mais ou menos</span>
+                <span className="text-red-400">{unknown} errei</span>
                 <span className="ml-auto text-dark-muted font-mono">{score}%</span>
               </div>
             </Link>

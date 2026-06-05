@@ -105,7 +105,7 @@ export function QuizSetupPanel({ preselectedCategories, categoryCounts }: Props)
 
       {open && createPortal(
         <div
-          className="fixed inset-0 z-50 bg-dark-bg/90 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-dark-bg flex items-center justify-center p-4"
           onClick={() => setOpen(false)}
         >
           <div

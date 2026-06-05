@@ -85,7 +85,8 @@ export function QuizReport({ quiz, locale }: Props) {
         <div className="flex flex-col gap-2">
           {quiz.questions.map((q, i) => {
             const answer = quiz.answers[i]
-            const icon = answer === 'known' ? '✅' : answer === 'partial' ? '🤔' : '❌'
+            const answerLabel = answer === 'known' ? t('known') : answer === 'partial' ? t('partial') : t('unknown')
+            const answerColor = answer === 'known' ? 'text-green-400' : answer === 'partial' ? 'text-yellow-400' : 'text-red-400'
             return (
               <div
                 key={q.slug}
@@ -93,7 +94,7 @@ export function QuizReport({ quiz, locale }: Props) {
               >
                 <span className="text-sm text-dark-text mr-4">{q.title}</span>
                 <div className="flex items-center gap-3 flex-shrink-0">
-                  <span>{icon}</span>
+                  <span className={`text-xs font-mono ${answerColor}`}>{answerLabel}</span>
                   <Link
                     href={`/${locale}/questions/${q.category}/${q.slug}`}
                     className="text-xs text-blue-400 hover:underline"
