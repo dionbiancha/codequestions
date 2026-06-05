@@ -99,7 +99,7 @@ export function QuizSetupPanel({ preselectedCategories, categoryCounts }: Props)
     <>
       <button
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+        className="inline-flex items-center gap-2 border border-blue-500/40 text-blue-400 hover:border-blue-500/70 hover:text-blue-300 text-sm px-4 py-2 rounded-lg transition-colors"
       >
         🎯 {t('createTest')}
       </button>
