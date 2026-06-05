@@ -1,7 +1,7 @@
 import { getTranslations, getLocale } from 'next-intl/server'
 import { CATEGORIES } from '@/lib/categories'
 import { getAllQuestionMeta } from '@/lib/content'
-import { CategoryCard } from '@/components/questions/CategoryCard'
+import { CategoriesGrid } from '@/components/questions/CategoriesGrid'
 import { QuizSetupPanel } from '@/components/quiz/QuizSetupPanel'
 
 export async function generateStaticParams() {
@@ -36,11 +36,7 @@ export default async function QuestionsPage() {
       <p className="text-dark-muted mb-10">
         {t('categories.subtitle')}
       </p>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-        {categoriesWithCount.map(({ cat, label, count }) => (
-          <CategoryCard key={cat.slug} category={cat} label={label} count={count} />
-        ))}
-      </div>
+      <CategoriesGrid categories={categoriesWithCount} />
     </div>
   )
 }
