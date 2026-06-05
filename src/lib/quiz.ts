@@ -44,6 +44,7 @@ export function getQuizStore(): QuizStore {
 }
 
 function saveQuizStore(store: QuizStore): void {
+  if (typeof window === 'undefined') return
   localStorage.setItem(STORAGE_KEY, JSON.stringify(store))
 }
 
@@ -52,13 +53,14 @@ export function startQuiz(
   questions: QuestionMeta[],
   locale: string
 ): ActiveQuiz {
+  const now = Date.now()
   const quiz: ActiveQuiz = {
-    id: Date.now().toString(),
+    id: crypto.randomUUID(),
     config,
     questions,
     answers: questions.map(() => null),
     currentIndex: 0,
-    startedAt: Date.now(),
+    startedAt: now,
     locale,
   }
   const store = getQuizStore()
@@ -71,6 +73,7 @@ export function answerCurrentQuestion(answer: QuizAnswer): ActiveQuiz | null {
   const store = getQuizStore()
   if (!store.active) return null
   const quiz = store.active
+  if (quiz.currentIndex >= quiz.questions.length) return quiz  // already complete
   const answers = [...quiz.answers]
   answers[quiz.currentIndex] = answer
   const updated: ActiveQuiz = { ...quiz, answers, currentIndex: quiz.currentIndex + 1 }
