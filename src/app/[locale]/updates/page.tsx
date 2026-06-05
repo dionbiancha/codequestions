@@ -11,6 +11,26 @@ type ChangelogEntry = {
 
 const CHANGELOG: ChangelogEntry[] = [
   {
+    date: '2026-06-05',
+    version: '1.7.0',
+    title: 'Custom quiz mode',
+    titlePt: 'Modo de teste customizado',
+    points: [
+      'Create a custom quiz from the question list or category hub — select categories, number of questions, seniority level, tags, and an optional timer',
+      'Answer each question with three options: Got it / Sort of / Wrong',
+      'Final report with overall score, breakdown by category, and a link to each question',
+      'Test history saved locally in the browser — no login required',
+      'Access past tests from the quiz setup modal',
+    ],
+    pointsPt: [
+      'Crie um teste customizado pela lista de perguntas ou pelo hub de categorias — escolha categorias, número de perguntas, senioridade, tags e um tempo opcional',
+      'Responda cada pergunta com três opções: Acertei / Mais ou menos / Errei',
+      'Relatório final com aproveitamento geral, breakdown por categoria e link para cada pergunta',
+      'Histórico de testes salvo localmente no navegador — sem cadastro',
+      'Acesse testes anteriores pelo modal de criar teste',
+    ],
+  },
+  {
     date: '2026-06-03',
     version: '1.6.2',
     title: 'Fix: skeleton overlay flashing and page visible in background',

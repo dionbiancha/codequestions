@@ -26,6 +26,10 @@ export default async function CategoryPage({ params }: Props) {
 
   const questions = getAllQuestionMeta(locale, category)
 
+  const categoryCounts = Object.fromEntries(
+    CATEGORIES.map(c => [c.slug, getAllQuestionMeta(locale, c.slug).length])
+  )
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
       <div className="flex items-center gap-3 mb-8">
@@ -54,7 +58,11 @@ export default async function CategoryPage({ params }: Props) {
           </Link>
         </div>
       ) : (
-        <QuestionListClient questions={questions} />
+        <QuestionListClient
+          questions={questions}
+          categoryCounts={categoryCounts}
+          currentCategory={category}
+        />
       )}
     </div>
   )
