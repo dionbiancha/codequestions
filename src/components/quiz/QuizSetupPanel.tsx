@@ -101,7 +101,7 @@ export function QuizSetupPanel({ preselectedCategories, categoryCounts }: Props)
         onClick={() => setOpen(true)}
         className="inline-flex items-center gap-2 border border-blue-500/40 text-blue-400 hover:border-blue-500/70 hover:text-blue-300 text-sm px-4 py-2 rounded-lg transition-colors"
       >
-        🎯 {t('createTest')}
+        {t('createTest')}
       </button>
 
       {open && createPortal(
@@ -116,7 +116,7 @@ export function QuizSetupPanel({ preselectedCategories, categoryCounts }: Props)
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-blue-500/20 bg-blue-500/5 rounded-t-xl flex-shrink-0">
               <span className="text-xs font-mono text-blue-400 uppercase tracking-widest">
-                🎯 {t('createTest')}
+                {t('createTest')}
               </span>
               <button
                 onClick={() => setOpen(false)}
