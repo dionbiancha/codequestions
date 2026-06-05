@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
 import { Badge } from '@/components/ui/Badge'
 import { FocusMode } from './FocusMode'
+import { QuizSetupPanel } from '@/components/quiz/QuizSetupPanel'
 import type { QuestionMeta } from '@/lib/content'
 import { QuestionCard } from './QuestionCard'
 const LEVELS = ['junior', 'pleno', 'senior', 'especialista'] as const
@@ -18,9 +19,11 @@ const difficultyVariant: Record<string, 'blue' | 'green' | 'orange'> = {
 
 type Props = {
   questions: QuestionMeta[]
+  categoryCounts: Record<string, number>
+  currentCategory: string
 }
 
-export function QuestionListClient({ questions }: Props) {
+export function QuestionListClient({ questions, categoryCounts, currentCategory }: Props) {
   const t = useTranslations('categories')
   const tQuestion = useTranslations('question')
 
@@ -239,13 +242,19 @@ export function QuestionListClient({ questions }: Props) {
           )}
         </span>
 
-        <button
-          onClick={pickRandom}
-          disabled={filtered.length === 0}
-          className="inline-flex items-center gap-2 border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading text-sm px-4 py-2 rounded-lg transition-colors disabled:opacity-40 disabled:pointer-events-none flex-shrink-0"
-        >
-          🎲 {t('randomQuestion')}
-        </button>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <button
+            onClick={pickRandom}
+            disabled={filtered.length === 0}
+            className="inline-flex items-center gap-2 border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading text-sm px-4 py-2 rounded-lg transition-colors disabled:opacity-40 disabled:pointer-events-none"
+          >
+            🎲 {t('randomQuestion')}
+          </button>
+          <QuizSetupPanel
+            preselectedCategories={[currentCategory]}
+            categoryCounts={categoryCounts}
+          />
+        </div>
       </div>
 
       {/* Focus mode overlay */}

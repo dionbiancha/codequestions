@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { getAllQuestionMeta } from '@/lib/content'
 import { getCategoryBySlug, CATEGORIES } from '@/lib/categories'
 import { QuestionListClient } from '@/components/questions/QuestionListClient'
-import { QuizSetupPanel } from '@/components/quiz/QuizSetupPanel'
 
 type Props = {
   params: Promise<{ locale: string; category: string }>
@@ -44,13 +43,11 @@ export default async function CategoryPage({ params }: Props) {
 
       <div className="flex items-center gap-4 mb-10">
         <span className="text-4xl">{cat.icon}</span>
-        <h1 className={`font-mono text-3xl font-bold flex-1 ${cat.color}`}>
-          {t(`categories.${cat.slug}`)}
-        </h1>
-        <QuizSetupPanel
-          preselectedCategories={[category]}
-          categoryCounts={categoryCounts}
-        />
+        <div>
+          <h1 className={`font-mono text-3xl font-bold ${cat.color}`}>
+            {t(`categories.${cat.slug}`)}
+          </h1>
+        </div>
       </div>
 
       {questions.length === 0 ? (
@@ -61,7 +58,11 @@ export default async function CategoryPage({ params }: Props) {
           </Link>
         </div>
       ) : (
-        <QuestionListClient questions={questions} />
+        <QuestionListClient
+          questions={questions}
+          categoryCounts={categoryCounts}
+          currentCategory={category}
+        />
       )}
     </div>
   )
