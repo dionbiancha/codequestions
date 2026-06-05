@@ -1,7 +1,7 @@
 import { getTranslations, getLocale } from 'next-intl/server'
 import { CATEGORIES } from '@/lib/categories'
 import { getAllQuestionMeta } from '@/lib/content'
-import { CategoriesGrid } from '@/components/questions/CategoriesGrid'
+import { CategoryListClient } from '@/components/questions/CategoryListClient'
 import { QuizSetupPanel } from '@/components/quiz/QuizSetupPanel'
 
 export async function generateStaticParams() {
@@ -16,7 +16,7 @@ export default async function QuestionsPage() {
     CATEGORIES.map(cat => [cat.slug, getAllQuestionMeta(locale, cat.slug).length])
   )
 
-  const categoriesWithCount = CATEGORIES.map(cat => ({
+  const categories = CATEGORIES.map(cat => ({
     cat,
     label: t(`categories.${cat.slug}`),
     count: categoryCounts[cat.slug],
@@ -33,10 +33,10 @@ export default async function QuestionsPage() {
           categoryCounts={categoryCounts}
         />
       </div>
-      <p className="text-dark-muted mb-10">
+      <p className="text-dark-muted mb-8">
         {t('categories.subtitle')}
       </p>
-      <CategoriesGrid categories={categoriesWithCount} />
+      <CategoryListClient categories={categories} />
     </div>
   )
 }
