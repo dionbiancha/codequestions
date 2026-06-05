@@ -7,8 +7,6 @@ import { Badge } from '@/components/ui/Badge'
 import { FocusMode } from './FocusMode'
 import type { QuestionMeta } from '@/lib/content'
 import { QuestionCard } from './QuestionCard'
-import { QuizSetupPanel } from '@/components/quiz/QuizSetupPanel'
-
 const LEVELS = ['junior', 'pleno', 'senior', 'especialista'] as const
 
 const difficultyVariant: Record<string, 'blue' | 'green' | 'orange'> = {
@@ -20,11 +18,9 @@ const difficultyVariant: Record<string, 'blue' | 'green' | 'orange'> = {
 
 type Props = {
   questions: QuestionMeta[]
-  categoryCounts: Record<string, number>
-  currentCategory: string
 }
 
-export function QuestionListClient({ questions, categoryCounts, currentCategory }: Props) {
+export function QuestionListClient({ questions }: Props) {
   const t = useTranslations('categories')
   const tQuestion = useTranslations('question')
 
@@ -152,10 +148,6 @@ export function QuestionListClient({ questions, categoryCounts, currentCategory 
 
   return (
     <div>
-      <div className="mb-4">
-        <QuizSetupPanel preselectedCategories={[currentCategory]} categoryCounts={categoryCounts} />
-      </div>
-
       {/* Level filter */}
       <div className="mb-4">
         <div className="flex items-center gap-2 flex-wrap">
