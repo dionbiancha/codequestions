@@ -100,7 +100,7 @@
     "madeBy": "Made by"
   },
   "quiz": {
-    "createTest": "Create Test",
+    "createTest": "Quiz",
     "categories": "Categories",
     "questionCount": "Questions",
     "seniority": "Seniority",
@@ -115,18 +115,18 @@
     "known": "Got it",
     "partial": "Sort of",
     "unknown": "Wrong",
-    "endTest": "End test",
+    "endTest": "End Quiz",
     "endConfirm": "End now? Remaining questions will be marked as unknown.",
     "result": "Result",
     "byCategory": "By Category",
     "score": "Score",
     "duration": "Duration",
-    "newTest": "New Test",
+    "newTest": "New Quiz",
     "viewHistory": "View History",
-    "history": "Test History",
-    "noHistory": "No tests completed yet.",
+    "history": "Quiz History",
+    "noHistory": "No quizzes completed yet.",
     "clearHistory": "Clear history",
     "clearHistoryConfirm": "Delete all history?",
-    "notFound": "Test not found."
+    "notFound": "Quiz not found."
   }
 }

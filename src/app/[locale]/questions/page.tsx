@@ -23,7 +23,7 @@ export default async function QuestionsPage() {
   }))
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12">
+    <div className="max-w-4xl mx-auto px-4 py-12">
       <div className="flex items-start justify-between gap-4 mb-2">
         <h1 className="font-mono text-3xl font-bold text-dark-heading">
           {t('categories.title')}
