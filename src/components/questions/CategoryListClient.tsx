@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useMemo } from 'react'
+import { useTranslations } from 'next-intl'
 import { CategoryCard } from './CategoryCard'
 import { countProgress } from '@/lib/progress'
 import type { Category } from '@/lib/categories'
@@ -18,6 +19,7 @@ type Props = {
 }
 
 export function CategoryListClient({ categories }: Props) {
+  const t = useTranslations('categories')
   const [query, setQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all')
   const [progressMap, setProgressMap] = useState<Record<string, number>>({})
@@ -32,6 +34,12 @@ export function CategoryListClient({ categories }: Props) {
     setProgressMap(map)
     setIsHydrated(true)
   }, [categories])
+
+  const chips: { value: StatusFilter; label: string }[] = [
+    { value: 'all',          label: t('filterAll') },
+    { value: 'in-progress',  label: t('filterInProgress') },
+    { value: 'not-started',  label: t('filterNotStarted') },
+  ]
 
   const filtered = useMemo(() =>
     categories.filter(({ cat, label }) => {
@@ -54,19 +62,13 @@ export function CategoryListClient({ categories }: Props) {
             type="text"
             value={query}
             onChange={e => setQuery(e.target.value)}
-            placeholder="Filtrar categorias..."
-            aria-label="Filtrar categorias"
+            placeholder={t('filterPlaceholder')}
+            aria-label={t('filterPlaceholder')}
             className="flex-1 bg-transparent text-sm text-dark-text placeholder-dark-muted outline-none font-mono"
           />
         </div>
         <div className="flex gap-2 flex-wrap">
-          {(
-            [
-              { value: 'all',          label: 'todas' },
-              { value: 'in-progress',  label: 'com progresso' },
-              { value: 'not-started',  label: 'não iniciadas' },
-            ] as { value: StatusFilter; label: string }[]
-          ).map(chip => (
+          {chips.map(chip => (
             <button
               key={chip.value}
               onClick={() => setStatusFilter(chip.value)}
@@ -85,7 +87,7 @@ export function CategoryListClient({ categories }: Props) {
 
       <div className="flex flex-col gap-2">
         {filtered.length === 0 ? (
-          <p className="text-sm text-dark-muted font-mono">Nenhuma categoria encontrada.</p>
+          <p className="text-sm text-dark-muted font-mono">{t('noCategoriesFound')}</p>
         ) : (
           filtered.map(({ cat, label, count }) => (
             <CategoryCard

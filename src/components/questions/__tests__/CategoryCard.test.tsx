@@ -10,6 +10,18 @@ vi.mock('next/link', () => ({
 
 vi.mock('next-intl', () => ({
   useLocale: () => 'pt',
+  useTranslations: (ns: string) => (key: string) => {
+    const map: Record<string, Record<string, string>> = {
+      categories: {
+        questionsTotal: 'perguntas',
+        notStarted: 'não iniciado',
+      },
+      progress: {
+        studied: 'concluídas',
+      },
+    }
+    return map[ns]?.[key] ?? key
+  },
 }))
 
 const mockCategory: Category = {

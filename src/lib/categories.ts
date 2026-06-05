@@ -13,7 +13,7 @@ export const CATEGORIES: Category[] = [
   { slug: 'data',         icon: '📊',  color: 'text-purple-400', borderColor: 'border-purple-500/30', accentColor: '#bc8cff' },
   { slug: 'soft-skills',  icon: '🗣️',  color: 'text-pink-400',   borderColor: 'border-pink-500/30',   accentColor: '#ff7b72' },
   { slug: 'architecture', icon: '🏗️',  color: 'text-yellow-400', borderColor: 'border-yellow-500/30', accentColor: '#e3b341' },
-  { slug: 'security',     icon: '🔒',  color: 'text-red-400',    borderColor: 'border-red-500/30',    accentColor: '#ff7b72' },
+  { slug: 'security',     icon: '🔒',  color: 'text-red-400',    borderColor: 'border-red-500/30',    accentColor: '#f85149' },
 ]
 
 export function getCategoryBySlug(slug: string): Category | undefined {

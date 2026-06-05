@@ -10,6 +10,23 @@ vi.mock('next/link', () => ({
 
 vi.mock('next-intl', () => ({
   useLocale: () => 'pt',
+  useTranslations: (ns: string) => (key: string) => {
+    const map: Record<string, Record<string, string>> = {
+      categories: {
+        filterAll: 'todas',
+        filterInProgress: 'com progresso',
+        filterNotStarted: 'não iniciadas',
+        filterPlaceholder: 'Filtrar categorias...',
+        noCategoriesFound: 'Nenhuma categoria encontrada.',
+        questionsTotal: 'perguntas',
+        notStarted: 'não iniciado',
+      },
+      progress: {
+        studied: 'concluídas',
+      },
+    }
+    return map[ns]?.[key] ?? key
+  },
 }))
 
 vi.mock('@/lib/progress', () => ({

@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import type { Category } from '@/lib/categories'
 
 type Props = {
@@ -13,6 +13,8 @@ type Props = {
 
 export function CategoryCard({ category, label, count, known }: Props) {
   const locale = useLocale()
+  const t = useTranslations('categories')
+  const tProgress = useTranslations('progress')
   const pct = count > 0 ? Math.round((known / count) * 100) : 0
 
   return (
@@ -26,7 +28,7 @@ export function CategoryCard({ category, label, count, known }: Props) {
           <span className="text-base">{category.icon}</span>
           <span className="font-mono font-bold text-sm text-dark-heading">{label}</span>
         </div>
-        <span className="text-xs text-dark-muted font-mono">{count} perguntas</span>
+        <span className="text-xs text-dark-muted font-mono">{count} {t('questionsTotal')}</span>
       </div>
       <div className="h-[3px] bg-dark-border rounded-full mb-1">
         <div
@@ -37,10 +39,10 @@ export function CategoryCard({ category, label, count, known }: Props) {
       </div>
       {known > 0 ? (
         <p className="text-[10px] font-mono" style={{ color: category.accentColor }}>
-          {known}/{count} concluídas
+          {known}/{count} {tProgress('studied')}
         </p>
       ) : (
-        <p className="text-[10px] font-mono text-dark-muted">não iniciado</p>
+        <p className="text-[10px] font-mono text-dark-muted">{t('notStarted')}</p>
       )}
     </Link>
   )
