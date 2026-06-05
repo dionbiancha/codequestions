@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { CategoryCard } from './CategoryCard'
 import { countProgress } from '@/lib/progress'
 import type { Category } from '@/lib/categories'
@@ -21,6 +21,7 @@ export function CategoryListClient({ categories }: Props) {
   const [query, setQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all')
   const [progressMap, setProgressMap] = useState<Record<string, number>>({})
+  const [isHydrated, setIsHydrated] = useState(false)
 
   useEffect(() => {
     const map: Record<string, number> = {}
@@ -29,16 +30,20 @@ export function CategoryListClient({ categories }: Props) {
       map[cat.slug] = known
     }
     setProgressMap(map)
+    setIsHydrated(true)
   }, [categories])
 
-  const filtered = categories.filter(({ cat, label }) => {
-    const q = query.toLowerCase()
-    const matchesQuery = label.toLowerCase().includes(q) || cat.slug.toLowerCase().includes(q)
-    const known = progressMap[cat.slug] ?? 0
-    if (statusFilter === 'in-progress') return matchesQuery && known > 0
-    if (statusFilter === 'not-started') return matchesQuery && known === 0
-    return matchesQuery
-  })
+  const filtered = useMemo(() =>
+    categories.filter(({ cat, label }) => {
+      const q = query.toLowerCase()
+      const matchesQuery = label.toLowerCase().includes(q) || cat.slug.toLowerCase().includes(q)
+      const known = progressMap[cat.slug] ?? 0
+      if (statusFilter === 'in-progress') return matchesQuery && known > 0
+      if (statusFilter === 'not-started') return matchesQuery && known === 0
+      return matchesQuery
+    }),
+    [categories, query, statusFilter, progressMap]
+  )
 
   return (
     <div>
@@ -50,6 +55,7 @@ export function CategoryListClient({ categories }: Props) {
             value={query}
             onChange={e => setQuery(e.target.value)}
             placeholder="Filtrar categorias..."
+            aria-label="Filtrar categorias"
             className="flex-1 bg-transparent text-sm text-dark-text placeholder-dark-muted outline-none font-mono"
           />
         </div>
@@ -64,6 +70,7 @@ export function CategoryListClient({ categories }: Props) {
             <button
               key={chip.value}
               onClick={() => setStatusFilter(chip.value)}
+              aria-pressed={statusFilter === chip.value}
               className={`text-xs font-mono px-3 py-1 rounded-full border transition-colors ${
                 statusFilter === chip.value
                   ? 'bg-blue-500/15 border-blue-500/50 text-blue-400'
@@ -86,7 +93,7 @@ export function CategoryListClient({ categories }: Props) {
               category={cat}
               label={label}
               count={count}
-              known={progressMap[cat.slug] ?? 0}
+              known={isHydrated ? (progressMap[cat.slug] ?? 0) : 0}
             />
           ))
         )}

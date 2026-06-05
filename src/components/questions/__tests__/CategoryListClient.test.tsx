@@ -85,4 +85,17 @@ describe('CategoryListClient', () => {
     })
     expect(screen.getByText('Nenhuma categoria encontrada.')).toBeInTheDocument()
   })
+
+  it('combines text and status filter', () => {
+    render(<CategoryListClient categories={categories} />)
+    fireEvent.click(screen.getByText('não iniciadas'))
+    fireEvent.change(screen.getByPlaceholderText('Filtrar categorias...'), {
+      target: { value: 'front' },
+    })
+    // frontend has known=5, so it's excluded from 'not-started'
+    expect(screen.queryByText('Frontend')).not.toBeInTheDocument()
+    expect(screen.queryByText('Backend')).not.toBeInTheDocument()
+    expect(screen.queryByText('DevOps')).not.toBeInTheDocument()
+    expect(screen.getByText('Nenhuma categoria encontrada.')).toBeInTheDocument()
+  })
 })
