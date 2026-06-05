@@ -53,6 +53,12 @@
     "focusModeNext": "Próxima",
     "focusModePrev": "Anterior",
     "focusModeClose": "Fechar",
+    "notStarted": "não iniciado",
+    "filterPlaceholder": "Filtrar categorias...",
+    "filterAll": "todas",
+    "filterInProgress": "com progresso",
+    "filterNotStarted": "não iniciadas",
+    "noCategoriesFound": "Nenhuma categoria encontrada.",
     "frontend": "Frontend",
     "backend": "Backend",
     "devops": "DevOps",
@@ -94,7 +100,7 @@
     "madeBy": "Feito por"
   },
   "quiz": {
-    "createTest": "Criar Teste",
+    "createTest": "Quiz",
     "categories": "Categorias",
     "questionCount": "Perguntas",
     "seniority": "Senioridade",
@@ -109,18 +115,18 @@
     "known": "Acertei",
     "partial": "Mais ou menos",
     "unknown": "Errei",
-    "endTest": "Encerrar teste",
+    "endTest": "Encerrar Quiz",
     "endConfirm": "Encerrar agora? As perguntas restantes serão marcadas como não sabia.",
     "result": "Resultado",
     "byCategory": "Por Categoria",
     "score": "Aproveitamento",
     "duration": "Duração",
-    "newTest": "Novo Teste",
+    "newTest": "Novo Quiz",
     "viewHistory": "Ver Histórico",
-    "history": "Histórico de Testes",
-    "noHistory": "Nenhum teste realizado ainda.",
+    "history": "Histórico de Quiz",
+    "noHistory": "Nenhum quiz realizado ainda.",
     "clearHistory": "Limpar histórico",
     "clearHistoryConfirm": "Apagar todo o histórico?",
-    "notFound": "Teste não encontrado."
+    "notFound": "Quiz não encontrado."
   }
 }

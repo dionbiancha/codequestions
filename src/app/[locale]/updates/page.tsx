@@ -12,6 +12,24 @@ type ChangelogEntry = {
 const CHANGELOG: ChangelogEntry[] = [
   {
     date: '2026-06-05',
+    version: '1.8.0',
+    title: 'Category page redesign — filterable list with progress',
+    titlePt: 'Redesign da página de categorias — lista filtrável com progresso',
+    points: [
+      'Replaced the card grid with a full-width vertical list — cleaner and more readable',
+      'Each category now shows a progress bar and a "X/total completed" label based on your local study history',
+      'Added a filter bar with text search and quick chips: all / with progress / not started',
+      'Renamed "Create Test" to "Quiz" throughout the app for consistency',
+    ],
+    pointsPt: [
+      'Grid de cards substituído por lista vertical full-width — mais limpa e legível',
+      'Cada categoria agora exibe uma barra de progresso e o contador "X/total concluídas" baseado no histórico de estudo local',
+      'Adicionada barra de filtro com busca por texto e chips rápidos: todas / com progresso / não iniciadas',
+      'Renomeado "Criar Teste" para "Quiz" em todo o app para maior consistência',
+    ],
+  },
+  {
+    date: '2026-06-05',
     version: '1.7.0',
     title: 'Custom quiz mode',
     titlePt: 'Modo de teste customizado',
