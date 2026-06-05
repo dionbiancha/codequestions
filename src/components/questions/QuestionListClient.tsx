@@ -1,13 +1,12 @@
 'use client'
 
 import { useState, useMemo, useCallback, useRef } from 'react'
-import Link from 'next/link'
-import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
-import { getQuestionStatus } from '@/lib/progress'
 import { Badge } from '@/components/ui/Badge'
-import { QuestionCard } from './QuestionCard'
+import { FocusMode } from './FocusMode'
 import type { QuestionMeta } from '@/lib/content'
+import { QuestionCard } from './QuestionCard'
 
 const LEVELS = ['junior', 'pleno', 'senior', 'especialista'] as const
 
@@ -16,82 +15,6 @@ const difficultyVariant: Record<string, 'blue' | 'green' | 'orange'> = {
   pleno: 'blue',
   senior: 'orange',
   especialista: 'orange',
-}
-
-function RandomCard({ question, onClose }: {
-  question: QuestionMeta
-  onClose: () => void
-}) {
-  const locale = useLocale()
-  const t = useTranslations('categories')
-  const tQuestion = useTranslations('question')
-  const [status, setStatus] = useState<'known' | 'review' | null>(null)
-  const [revealed, setRevealed] = useState(false)
-
-  useEffect(() => {
-    setStatus(getQuestionStatus(question.path))
-    setRevealed(false)
-  }, [question.path])
-
-  return (
-    <div className="mb-6 bg-dark-surface border border-blue-500/30 rounded-xl overflow-hidden">
-      <div className="flex items-center justify-between px-5 py-3 border-b border-blue-500/20 bg-blue-500/5">
-        <span className="text-xs font-mono text-blue-400 uppercase tracking-widest">
-          🎲 {t('randomTitle')}
-        </span>
-        <button
-          onClick={onClose}
-          className="text-dark-muted hover:text-dark-heading transition-colors text-xl leading-none"
-          aria-label="Close"
-        >
-          ×
-        </button>
-      </div>
-
-      <div className="p-5">
-        <div className="flex items-center gap-2 mb-3 flex-wrap">
-          <Badge variant={difficultyVariant[question.difficulty] ?? 'gray'}>
-            {tQuestion(`difficulty.${question.difficulty}`)}
-          </Badge>
-          {question.tags.slice(0, 4).map(tag => (
-            <Badge key={tag} variant="gray">{tag}</Badge>
-          ))}
-          {status === 'known' && <span title="Got it" className="text-base">✅</span>}
-          {status === 'review' && <span title="Needs review" className="text-base">🔄</span>}
-        </div>
-
-        <h3 className="font-semibold text-dark-heading text-base leading-snug mb-5">
-          {question.title}
-        </h3>
-
-        {!revealed ? (
-          <button
-            onClick={() => setRevealed(true)}
-            className="inline-flex items-center gap-2 border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading text-sm px-4 py-2 rounded-lg transition-colors"
-          >
-            {t('showAnswer')}
-          </button>
-        ) : (
-          <div>
-            <div className="bg-dark-bg border border-dark-border rounded-lg px-4 py-3 mb-4">
-              <p className="text-xs font-mono text-dark-muted uppercase tracking-widest mb-2">
-                {t('quickAnswerLabel')}
-              </p>
-              <p className="text-sm text-dark-text leading-relaxed">
-                {question.quickAnswer || '—'}
-              </p>
-            </div>
-            <Link
-              href={`/${locale}/questions/${question.category}/${question.slug}`}
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
-            >
-              {t('openQuestion')} →
-            </Link>
-          </div>
-        )}
-      </div>
-    </div>
-  )
 }
 
 type Props = {
@@ -108,6 +31,8 @@ export function QuestionListClient({ questions }: Props) {
   const [tagFocused, setTagFocused] = useState(false)
   const [randomQuestion, setRandomQuestion] = useState<QuestionMeta | null>(null)
   const [seenSlugs, setSeenSlugs] = useState<Set<string>>(new Set())
+  const [history, setHistory] = useState<QuestionMeta[]>([])
+  const [historyIndex, setHistoryIndex] = useState(-1)
 
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -139,6 +64,8 @@ export function QuestionListClient({ questions }: Props) {
     )
     setRandomQuestion(null)
     setSeenSlugs(new Set())
+    setHistory([])
+    setHistoryIndex(-1)
   }
 
   const toggleTag = (tag: string) => {
@@ -147,6 +74,8 @@ export function QuestionListClient({ questions }: Props) {
     )
     setRandomQuestion(null)
     setSeenSlugs(new Set())
+    setHistory([])
+    setHistoryIndex(-1)
   }
 
   const addTag = (tag: string) => {
@@ -154,6 +83,8 @@ export function QuestionListClient({ questions }: Props) {
       setSelectedTags(prev => [...prev, tag])
       setRandomQuestion(null)
       setSeenSlugs(new Set())
+      setHistory([])
+      setHistoryIndex(-1)
     }
     setTagInput('')
     inputRef.current?.focus()
@@ -165,6 +96,8 @@ export function QuestionListClient({ questions }: Props) {
     setTagInput('')
     setRandomQuestion(null)
     setSeenSlugs(new Set())
+    setHistory([])
+    setHistoryIndex(-1)
   }
 
   const handleTagKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -191,11 +124,25 @@ export function QuestionListClient({ questions }: Props) {
     const pick = available[Math.floor(Math.random() * available.length)]
     setRandomQuestion(pick)
     setSeenSlugs(new Set([...nextSeen, pick.slug]))
-  }, [filtered, seenSlugs])
+    setHistory(prev => {
+      const truncated = prev.slice(0, historyIndex + 1)
+      return [...truncated, pick]
+    })
+    setHistoryIndex(prev => prev + 1)
+  }, [filtered, seenSlugs, historyIndex])
+
+  const handlePrev = useCallback(() => {
+    if (historyIndex <= 0) return
+    const newIndex = historyIndex - 1
+    setHistoryIndex(newIndex)
+    setRandomQuestion(history[newIndex])
+  }, [history, historyIndex])
 
   const closeRandom = () => {
     setRandomQuestion(null)
     setSeenSlugs(new Set())
+    setHistory([])
+    setHistoryIndex(-1)
   }
 
   const isFiltering = selectedTags.length > 0 || selectedLevels.length > 0
@@ -302,10 +249,13 @@ export function QuestionListClient({ questions }: Props) {
         </button>
       </div>
 
-      {/* Random question card */}
+      {/* Focus mode overlay */}
       {randomQuestion && (
-        <RandomCard
+        <FocusMode
           question={randomQuestion}
+          onNext={pickRandom}
+          onPrev={handlePrev}
+          hasPrev={historyIndex > 0}
           onClose={closeRandom}
         />
       )}
