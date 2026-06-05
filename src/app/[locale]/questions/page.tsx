@@ -36,7 +36,7 @@ export default async function QuestionsPage() {
         ))}
       </div>
 
-      <div className="border-t border-dark-border pt-8">
+      <div className="mt-2 mb-4">
         <QuizSetupPanel
           preselectedCategories={[]}
           categoryCounts={categoryCounts}

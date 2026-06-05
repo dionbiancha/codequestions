@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useTransition, useRef, useMemo } from 'react'
+import { useState, useTransition, useRef, useMemo, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { useLocale, useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { CATEGORIES } from '@/lib/categories'
@@ -41,6 +42,13 @@ export function QuizSetupPanel({ preselectedCategories, categoryCounts }: Props)
   )
   const maxCount = Math.min(availableCount, 100)
   const safeCount = Math.max(1, Math.min(count, maxCount || 1))
+
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [open])
 
   const toggleCategory = (slug: string) =>
     setCategories(prev =>
@@ -86,169 +94,182 @@ export function QuizSetupPanel({ preselectedCategories, categoryCounts }: Props)
     })
   }
 
-  if (!open) {
-    return (
+  return (
+    <>
       <button
         onClick={() => setOpen(true)}
-        className="w-full mb-4 flex items-center gap-2 border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading text-sm px-4 py-2.5 rounded-lg transition-colors"
+        className="inline-flex items-center gap-2 border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading text-sm px-4 py-2 rounded-lg transition-colors"
       >
         🎯 {t('createTest')}
-        <span className="ml-auto opacity-50 text-xs">▼</span>
       </button>
-    )
-  }
 
-  return (
-    <div className="mb-6 border border-blue-500/20 bg-blue-500/5 rounded-lg p-4">
-      <div className="flex items-center justify-between mb-4">
-        <span className="text-xs font-mono text-blue-400 uppercase tracking-widest">
-          🎯 {t('createTest')}
-        </span>
-        <button
-          onClick={() => setOpen(false)}
-          className="text-dark-muted hover:text-dark-heading text-lg leading-none transition-colors"
-          aria-label="Fechar"
-        >
-          ▲
-        </button>
-      </div>
-
-      {/* Categories */}
-      <div className="mb-4">
-        <span className="text-xs font-mono text-dark-muted uppercase tracking-widest block mb-2">
-          {t('categories')}
-        </span>
-        <div className="flex flex-wrap gap-2">
-          {CATEGORIES.map(cat => {
-            const active = categories.includes(cat.slug)
-            const cnt = categoryCounts[cat.slug] ?? 0
-            return (
-              <button
-                key={cat.slug}
-                onClick={() => toggleCategory(cat.slug)}
-                className={`text-xs font-mono px-2.5 py-1 rounded-full border transition-colors ${
-                  active
-                    ? 'border-blue-500 text-blue-400 bg-blue-500/10'
-                    : 'border-dark-border text-dark-muted hover:border-blue-500/50 hover:text-dark-heading'
-                }`}
-              >
-                {active && '✓ '}{cat.icon} {cat.slug} ({cnt})
-              </button>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Count + Timer */}
-      <div className="flex gap-3 mb-4">
-        <div className="flex-1">
-          <span className="text-xs font-mono text-dark-muted uppercase tracking-widest block mb-2">
-            {t('questionCount')}
-          </span>
-          <input
-            type="number"
-            min={1}
-            max={maxCount || 1}
-            value={safeCount}
-            onChange={e => setCount(Math.max(1, parseInt(e.target.value) || 1))}
-            className="w-full bg-dark-surface border border-dark-border rounded px-3 py-1.5 text-sm text-dark-text focus:border-blue-500/50 outline-none"
-          />
-        </div>
-        <div className="flex-1">
-          <span className="text-xs font-mono text-dark-muted uppercase tracking-widest block mb-2">
-            {t('timer')}
-          </span>
-          <div className="flex items-center gap-2">
-            <input
-              type="number"
-              min={1}
-              placeholder="—"
-              value={timerMinutes}
-              onChange={e => setTimerMinutes(e.target.value)}
-              className="w-full bg-dark-surface border border-dark-border rounded px-3 py-1.5 text-sm text-dark-text focus:border-blue-500/50 outline-none"
-            />
-            <span className="text-xs text-dark-muted flex-shrink-0">{t('timerUnit')}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Seniority */}
-      <div className="mb-4">
-        <span className="text-xs font-mono text-dark-muted uppercase tracking-widest block mb-2">
-          {t('seniority')}
-        </span>
-        <div className="flex flex-wrap gap-2">
-          {DIFFICULTIES.map(d => {
-            const active = difficulties.includes(d)
-            return (
-              <button
-                key={d}
-                onClick={() => toggleDifficulty(d)}
-                className={`text-xs font-mono px-2.5 py-1 rounded-full border transition-colors ${
-                  active
-                    ? 'border-green-500 text-green-400 bg-green-500/10'
-                    : 'border-dark-border text-dark-muted hover:border-green-500/50'
-                }`}
-              >
-                {active && '✓ '}{tQuestion(`difficulty.${d}`)}
-              </button>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Tags */}
-      <div className="mb-4">
-        <span className="text-xs font-mono text-dark-muted uppercase tracking-widest block mb-2">
-          {t('tags')}
-        </span>
+      {open && createPortal(
         <div
-          className="flex flex-wrap gap-1.5 items-center p-2 bg-dark-surface border border-dark-border rounded-lg focus-within:border-blue-500/50 transition-colors cursor-text"
-          onClick={() => inputRef.current?.focus()}
+          className="fixed inset-0 z-50 bg-dark-bg/90 flex items-center justify-center p-4"
+          onClick={() => setOpen(false)}
         >
-          {tags.map(tag => (
-            <span
-              key={tag}
-              className="inline-flex items-center gap-1 text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded px-2 py-0.5"
-            >
-              {tag}
+          <div
+            className="bg-dark-bg border border-dark-border rounded-xl w-full max-w-lg max-h-[90vh] flex flex-col shadow-2xl"
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-blue-500/20 bg-blue-500/5 rounded-t-xl flex-shrink-0">
+              <span className="text-xs font-mono text-blue-400 uppercase tracking-widest">
+                🎯 {t('createTest')}
+              </span>
               <button
-                onMouseDown={e => { e.preventDefault(); setTags(prev => prev.filter(t => t !== tag)) }}
-                className="hover:text-blue-300 leading-none"
+                onClick={() => setOpen(false)}
+                className="text-dark-muted hover:text-dark-heading transition-colors text-2xl leading-none"
+                aria-label="Fechar"
               >
                 ×
               </button>
-            </span>
-          ))}
-          <input
-            ref={inputRef}
-            value={tagInput}
-            onChange={e => setTagInput(e.target.value)}
-            onKeyDown={handleTagKeyDown}
-            placeholder={tags.length === 0 ? 'react, hooks, ...' : ''}
-            className="flex-1 bg-transparent text-sm text-dark-text placeholder-dark-muted outline-none min-w-[100px]"
-          />
-        </div>
-      </div>
+            </div>
 
-      {/* Start */}
-      <div className="flex items-center gap-3">
-        <button
-          onClick={handleStart}
-          disabled={isPending || categories.length === 0 || maxCount === 0}
-          className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2 rounded-lg transition-colors disabled:opacity-40 disabled:pointer-events-none"
-        >
-          {isPending ? '...' : `${t('start')} →`}
-        </button>
-        {categories.length > 0 && maxCount > 0 && (
-          <span className="text-xs text-dark-muted">
-            {availableCount} {t('questionsAvailable')}
-          </span>
-        )}
-        {noResults && (
-          <span className="text-xs text-red-400">{t('noQuestionsHint')}</span>
-        )}
-      </div>
-    </div>
+            {/* Scrollable body */}
+            <div className="flex-1 overflow-y-auto px-6 py-5">
+
+              {/* Categories */}
+              <div className="mb-5">
+                <span className="text-xs font-mono text-dark-muted uppercase tracking-widest block mb-2">
+                  {t('categories')}
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {CATEGORIES.map(cat => {
+                    const active = categories.includes(cat.slug)
+                    const cnt = categoryCounts[cat.slug] ?? 0
+                    return (
+                      <button
+                        key={cat.slug}
+                        onClick={() => toggleCategory(cat.slug)}
+                        className={`text-xs font-mono px-2.5 py-1 rounded-full border transition-colors ${
+                          active
+                            ? 'border-blue-500 text-blue-400 bg-blue-500/10'
+                            : 'border-dark-border text-dark-muted hover:border-blue-500/50 hover:text-dark-heading'
+                        }`}
+                      >
+                        {active && '✓ '}{cat.icon} {cat.slug} ({cnt})
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {/* Count + Timer */}
+              <div className="flex gap-3 mb-5">
+                <div className="flex-1">
+                  <span className="text-xs font-mono text-dark-muted uppercase tracking-widest block mb-2">
+                    {t('questionCount')}
+                  </span>
+                  <input
+                    type="number"
+                    min={1}
+                    max={maxCount || 1}
+                    value={safeCount}
+                    onChange={e => setCount(Math.max(1, parseInt(e.target.value) || 1))}
+                    className="w-full bg-dark-surface border border-dark-border rounded px-3 py-1.5 text-sm text-dark-text focus:border-blue-500/50 outline-none"
+                  />
+                </div>
+                <div className="flex-1">
+                  <span className="text-xs font-mono text-dark-muted uppercase tracking-widest block mb-2">
+                    {t('timer')}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="number"
+                      min={1}
+                      placeholder="—"
+                      value={timerMinutes}
+                      onChange={e => setTimerMinutes(e.target.value)}
+                      className="w-full bg-dark-surface border border-dark-border rounded px-3 py-1.5 text-sm text-dark-text focus:border-blue-500/50 outline-none"
+                    />
+                    <span className="text-xs text-dark-muted flex-shrink-0">{t('timerUnit')}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Seniority */}
+              <div className="mb-5">
+                <span className="text-xs font-mono text-dark-muted uppercase tracking-widest block mb-2">
+                  {t('seniority')}
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {DIFFICULTIES.map(d => {
+                    const active = difficulties.includes(d)
+                    return (
+                      <button
+                        key={d}
+                        onClick={() => toggleDifficulty(d)}
+                        className={`text-xs font-mono px-2.5 py-1 rounded-full border transition-colors ${
+                          active
+                            ? 'border-green-500 text-green-400 bg-green-500/10'
+                            : 'border-dark-border text-dark-muted hover:border-green-500/50'
+                        }`}
+                      >
+                        {active && '✓ '}{tQuestion(`difficulty.${d}`)}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {/* Tags */}
+              <div className="mb-2">
+                <span className="text-xs font-mono text-dark-muted uppercase tracking-widest block mb-2">
+                  {t('tags')}
+                </span>
+                <div
+                  className="flex flex-wrap gap-1.5 items-center p-2 bg-dark-surface border border-dark-border rounded-lg focus-within:border-blue-500/50 transition-colors cursor-text"
+                  onClick={() => inputRef.current?.focus()}
+                >
+                  {tags.map(tag => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center gap-1 text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded px-2 py-0.5"
+                    >
+                      {tag}
+                      <button
+                        onMouseDown={e => { e.preventDefault(); setTags(prev => prev.filter(t => t !== tag)) }}
+                        className="hover:text-blue-300 leading-none"
+                      >
+                        ×
+                      </button>
+                    </span>
+                  ))}
+                  <input
+                    ref={inputRef}
+                    value={tagInput}
+                    onChange={e => setTagInput(e.target.value)}
+                    onKeyDown={handleTagKeyDown}
+                    placeholder={tags.length === 0 ? 'react, hooks, ...' : ''}
+                    className="flex-1 bg-transparent text-sm text-dark-text placeholder-dark-muted outline-none min-w-[100px]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="flex items-center gap-3 px-6 py-4 border-t border-dark-border rounded-b-xl flex-shrink-0">
+              <button
+                onClick={handleStart}
+                disabled={isPending || categories.length === 0 || maxCount === 0}
+                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2 rounded-lg transition-colors disabled:opacity-40 disabled:pointer-events-none"
+              >
+                {isPending ? '...' : `${t('start')} →`}
+              </button>
+              {categories.length > 0 && maxCount > 0 && (
+                <span className="text-xs text-dark-muted">
+                  {availableCount} {t('questionsAvailable')}
+                </span>
+              )}
+              {noResults && (
+                <span className="text-xs text-red-400">{t('noQuestionsHint')}</span>
+              )}
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
+    </>
   )
 }

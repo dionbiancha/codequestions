@@ -152,7 +152,9 @@ export function QuestionListClient({ questions, categoryCounts, currentCategory 
 
   return (
     <div>
-      <QuizSetupPanel preselectedCategories={[currentCategory]} categoryCounts={categoryCounts} />
+      <div className="mb-4">
+        <QuizSetupPanel preselectedCategories={[currentCategory]} categoryCounts={categoryCounts} />
+      </div>
 
       {/* Level filter */}
       <div className="mb-4">
