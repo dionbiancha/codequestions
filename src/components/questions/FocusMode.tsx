@@ -44,7 +44,7 @@ export function FocusMode({ question, onNext, onPrev, hasPrev, onClose }: Props)
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 bg-dark-bg flex items-center justify-center p-4"
       role="dialog"
       aria-modal="true"
       onClick={onClose}
