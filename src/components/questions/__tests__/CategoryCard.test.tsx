@@ -47,9 +47,10 @@ describe('CategoryCard', () => {
     expect(screen.getByText('⚛️')).toBeInTheDocument()
   })
 
-  it('renders a progress bar element', () => {
+  it('renders a progress bar with correct width', () => {
     const { container } = render(<CategoryCard category={mockCategory} label="Frontend" count={48} known={17} />)
     const fill = container.querySelector('[data-testid="progress-fill"]')
     expect(fill).toBeInTheDocument()
+    expect(fill).toHaveStyle({ width: '35%' })
   })
 })
