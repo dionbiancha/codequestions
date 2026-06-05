@@ -246,7 +246,7 @@ export function QuestionListClient({ questions, categoryCounts, currentCategory 
           <button
             onClick={pickRandom}
             disabled={filtered.length === 0}
-            className="inline-flex items-center gap-2 border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading text-sm px-4 py-2 rounded-lg transition-colors disabled:opacity-40 disabled:pointer-events-none"
+            className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-40 disabled:pointer-events-none"
           >
             🎲 {t('randomQuestion')}
           </button>
