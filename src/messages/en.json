@@ -92,5 +92,35 @@
   "footer": {
     "openSource": "Open source on GitHub",
     "madeBy": "Made by"
+  },
+  "quiz": {
+    "createTest": "Create Test",
+    "categories": "Categories",
+    "questionCount": "Questions",
+    "seniority": "Seniority",
+    "tags": "Tags",
+    "timer": "Time (optional)",
+    "timerUnit": "min",
+    "start": "Start",
+    "questionsAvailable": "available",
+    "noQuestionsHint": "No questions match these filters",
+    "questionLabel": "Question",
+    "revealAnswer": "Reveal quick answer",
+    "known": "Knew it",
+    "partial": "Sort of",
+    "unknown": "Didn't know",
+    "endTest": "End test",
+    "endConfirm": "End now? Remaining questions will be marked as unknown.",
+    "result": "Result",
+    "byCategory": "By Category",
+    "score": "Score",
+    "duration": "Duration",
+    "newTest": "New Test",
+    "viewHistory": "View History",
+    "history": "Test History",
+    "noHistory": "No tests completed yet.",
+    "clearHistory": "Clear history",
+    "clearHistoryConfirm": "Delete all history?",
+    "notFound": "Test not found."
   }
 }
