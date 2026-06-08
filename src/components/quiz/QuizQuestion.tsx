@@ -118,26 +118,28 @@ export function QuizQuestion({
       )}
 
       {/* Answer buttons */}
-      <div className="flex gap-3">
-        <button
-          onClick={() => onAnswer('known')}
-          className="flex-1 bg-green-700 hover:bg-green-600 text-white font-medium text-sm py-3 rounded-lg transition-colors"
-        >
-          {t('known')}
-        </button>
-        <button
-          onClick={() => onAnswer('partial')}
-          className="flex-1 bg-yellow-700 hover:bg-yellow-600 text-white font-medium text-sm py-3 rounded-lg transition-colors"
-        >
-          {t('partial')}
-        </button>
-        <button
-          onClick={() => onAnswer('unknown')}
-          className="flex-1 bg-red-800 hover:bg-red-700 text-white font-medium text-sm py-3 rounded-lg transition-colors"
-        >
-          {t('unknown')}
-        </button>
-      </div>
+      {revealed && (
+        <div className="flex gap-3">
+          <button
+            onClick={() => onAnswer('known')}
+            className="flex-1 bg-green-700 hover:bg-green-600 text-white font-medium text-sm py-3 rounded-lg transition-colors"
+          >
+            {t('known')}
+          </button>
+          <button
+            onClick={() => onAnswer('partial')}
+            className="flex-1 bg-yellow-700 hover:bg-yellow-600 text-white font-medium text-sm py-3 rounded-lg transition-colors"
+          >
+            {t('partial')}
+          </button>
+          <button
+            onClick={() => onAnswer('unknown')}
+            className="flex-1 bg-red-800 hover:bg-red-700 text-white font-medium text-sm py-3 rounded-lg transition-colors"
+          >
+            {t('unknown')}
+          </button>
+        </div>
+      )}
     </div>
   )
 }
