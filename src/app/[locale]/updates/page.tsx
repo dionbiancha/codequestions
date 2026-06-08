@@ -11,6 +11,22 @@ type ChangelogEntry = {
 
 const CHANGELOG: ChangelogEntry[] = [
   {
+    date: '2026-06-08',
+    version: '1.9.0',
+    title: 'Quiz modal focus mode & reveal-before-answer flow',
+    titlePt: 'Modal de foco no quiz e fluxo de revelar antes de responder',
+    points: [
+      'Quiz questions now open in a full-screen modal overlay — same focus pattern as the random question mode',
+      'Added a "Show Answer" step to both quiz and random question: answer/navigation buttons only appear after revealing',
+      'Renamed "See full question" to "See full answer" in random question mode for clarity',
+    ],
+    pointsPt: [
+      'Perguntas do quiz agora abrem em um modal de tela cheia — mesmo padrão de foco da pergunta aleatória',
+      'Adicionado passo "Ver Resposta" no quiz e na pergunta aleatória: botões de resposta/navegação só aparecem após revelar',
+      'Botão "Ver pergunta completa" renomeado para "Ver resposta completa" na pergunta aleatória',
+    ],
+  },
+  {
     date: '2026-06-05',
     version: '1.8.0',
     title: 'Category page redesign — filterable list with progress',

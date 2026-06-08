@@ -68,22 +68,26 @@ describe('FocusMode', () => {
 
   it('disables Anterior button when hasPrev is false', () => {
     render(<FocusMode {...defaultProps} hasPrev={false} />)
+    fireEvent.click(screen.getByText('showAnswer'))
     expect(screen.getByText(/focusModePrev/)).toBeDisabled()
   })
 
   it('enables Anterior button when hasPrev is true', () => {
     render(<FocusMode {...defaultProps} hasPrev={true} />)
+    fireEvent.click(screen.getByText('showAnswer'))
     expect(screen.getByText(/focusModePrev/)).not.toBeDisabled()
   })
 
   it('calls onPrev when Anterior button is clicked and hasPrev is true', () => {
     render(<FocusMode {...defaultProps} hasPrev={true} />)
+    fireEvent.click(screen.getByText('showAnswer'))
     fireEvent.click(screen.getByText(/focusModePrev/))
     expect(defaultProps.onPrev).toHaveBeenCalledOnce()
   })
 
   it('calls onNext when Próxima button is clicked', () => {
     render(<FocusMode {...defaultProps} />)
+    fireEvent.click(screen.getByText('showAnswer'))
     fireEvent.click(screen.getByText(/focusModeNext/))
     expect(defaultProps.onNext).toHaveBeenCalledOnce()
   })

@@ -85,14 +85,7 @@ export function FocusMode({ question, onNext, onPrev, hasPrev, onClose }: Props)
             {question.title}
           </h2>
 
-          {!revealed ? (
-            <button
-              onClick={() => setRevealed(true)}
-              className="inline-flex items-center gap-2 border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading text-sm px-4 py-2 rounded-lg transition-colors"
-            >
-              {t('showAnswer')}
-            </button>
-          ) : (
+          {revealed && (
             <div>
               <div className="bg-dark-surface border border-dark-border rounded-lg px-4 py-3 mb-4">
                 <p className="text-xs font-mono text-dark-muted uppercase tracking-widest mb-2">
@@ -114,19 +107,30 @@ export function FocusMode({ question, onNext, onPrev, hasPrev, onClose }: Props)
 
         {/* Footer */}
         <div className="flex items-center justify-center gap-4 px-6 py-4 border-t border-dark-border rounded-b-xl flex-shrink-0">
-          <button
-            onClick={onPrev}
-            disabled={!hasPrev}
-            className="inline-flex items-center gap-2 border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading text-sm px-4 py-2 rounded-lg transition-colors disabled:opacity-40 disabled:pointer-events-none"
-          >
-            ← {t('focusModePrev')}
-          </button>
-          <button
-            onClick={onNext}
-            className="inline-flex items-center gap-2 border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading text-sm px-4 py-2 rounded-lg transition-colors"
-          >
-            {t('focusModeNext')} →
-          </button>
+          {!revealed ? (
+            <button
+              onClick={() => setRevealed(true)}
+              className="inline-flex items-center gap-2 border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading text-sm px-4 py-2 rounded-lg transition-colors"
+            >
+              {t('showAnswer')}
+            </button>
+          ) : (
+            <>
+              <button
+                onClick={onPrev}
+                disabled={!hasPrev}
+                className="inline-flex items-center gap-2 border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading text-sm px-4 py-2 rounded-lg transition-colors disabled:opacity-40 disabled:pointer-events-none"
+              >
+                ← {t('focusModePrev')}
+              </button>
+              <button
+                onClick={onNext}
+                className="inline-flex items-center gap-2 border border-dark-border hover:border-blue-500/50 text-dark-muted hover:text-dark-heading text-sm px-4 py-2 rounded-lg transition-colors"
+              >
+                {t('focusModeNext')} →
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>,
