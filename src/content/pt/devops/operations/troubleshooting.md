@@ -3,7 +3,7 @@ title: "O que é troubleshooting?"
 category: devops
 subcategory: operations
 tags: [troubleshooting, diagnostico, monitoramento, suporte]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 

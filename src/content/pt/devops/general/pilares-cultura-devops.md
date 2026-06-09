@@ -3,7 +3,7 @@ title: "Quais são os pilares da cultura DevOps?"
 category: devops
 subcategory: fundamentals
 tags: [devops, cultura, calms, automacao, colaboracao]
-difficulty: intermediate
+difficulty: junior
 lang: pt
 ---
 

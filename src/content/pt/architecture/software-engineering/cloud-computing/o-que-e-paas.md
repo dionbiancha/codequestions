@@ -3,7 +3,7 @@ title: "O que é PaaS?"
 category: software-engineering
 subcategory: cloud-computing
 tags: [paas, cloud, plataforma, infraestrutura]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 

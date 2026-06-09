@@ -3,7 +3,7 @@ title: "O que é uma war room?"
 category: devops
 subcategory: incident-management
 tags: [war-room, incidentes, troubleshooting, sre]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

@@ -3,7 +3,7 @@ title: "O que é SRE (Site Reliability Engineering)?"
 category: devops
 subcategory: sre
 tags: [sre, confiabilidade, disponibilidade, observabilidade, operacoes]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

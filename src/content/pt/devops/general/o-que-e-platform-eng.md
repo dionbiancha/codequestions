@@ -3,7 +3,7 @@ title: "O que é Platform Engineering?"
 category: devops
 subcategory: platform-engineering
 tags: [platform-engineering, devops, developer-experience, infraestrutura]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 

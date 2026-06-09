@@ -3,7 +3,7 @@ title: "O que é IaaS?"
 category: software-engineering
 subcategory: cloud-computing
 tags: [iaas, cloud, infraestrutura, computacao-em-nuvem]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 

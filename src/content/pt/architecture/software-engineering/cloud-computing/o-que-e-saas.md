@@ -3,7 +3,7 @@ title: "O que é SaaS?"
 category: software-engineering
 subcategory: cloud-computing
 tags: [saas, cloud, software, arquitetura]
-difficulty: beginner
+difficulty: junior
 lang: pt
 ---
 

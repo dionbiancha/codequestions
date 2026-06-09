@@ -3,7 +3,7 @@ title: "O que é o conceito de lock-in em cloud computing?"
 category: software-engineering
 subcategory: cloud-computing
 tags: [cloud, lock-in, vendor-lock-in, arquitetura]
-difficulty: intermediate
+difficulty: pleno
 lang: pt
 ---
 
