@@ -93,7 +93,7 @@ title: "What is a closure in JavaScript?"
 category: frontend
 subcategory: javascript
 tags: [closures, scope, functions]
-difficulty: intermediate   # beginner | intermediate | advanced
+difficulty: junior   # junior | pleno | senior | especialista
 lang: en
 ---
 ```
@@ -104,8 +104,17 @@ lang: en
 | `category` | yes | `frontend` `backend` `devops` `data` `soft-skills` `architecture` `security` |
 | `subcategory` | yes | e.g. `javascript`, `react`, `node`, `docker` |
 | `tags` | yes | Array of relevant keywords |
-| `difficulty` | yes | `beginner` `intermediate` `advanced` |
+| `difficulty` | yes | `junior` `pleno` `senior` `especialista` |
 | `lang` | yes | `en` or `pt` |
+
+**Difficulty levels:**
+
+| Value | Description |
+|---|---|
+| `junior` | Entry-level concept — up to 2 years of experience |
+| `pleno` | Intermediate concept — mid-level developers |
+| `senior` | Advanced concept — broad experience or deep specialization |
+| `especialista` | Expert-level — niche, architectural, or low-level knowledge |
 
 ### 4. Write the three required sections
 

@@ -33,7 +33,7 @@ title: "What is a closure in JavaScript?"
 category: frontend
 subcategory: javascript
 tags: [closures, scope, functions]
-difficulty: intermediate
+difficulty: junior
 lang: en
 ---
 
@@ -55,6 +55,15 @@ One or two sentences for the interviewer.
 ## Step 4: Open a Pull Request
 
 Push your branch and open a PR against \`main\`. A maintainer will review and merge it.
+
+## Difficulty levels
+
+| Value | Description |
+|---|---|
+| \`junior\` | Entry-level concept — expected from candidates with up to 2 years of experience |
+| \`pleno\` | Intermediate concept — expected from mid-level developers |
+| \`senior\` | Advanced concept — requires broad experience or deep specialization |
+| \`especialista\` | Expert-level — niche, architectural, or low-level knowledge |
 
 ## Rules
 
@@ -96,7 +105,7 @@ title: "O que é um closure em JavaScript?"
 category: frontend
 subcategory: javascript
 tags: [closures, escopo, funções]
-difficulty: intermediate
+difficulty: junior
 lang: pt
 ---
 
@@ -118,6 +127,15 @@ Uma ou duas frases para o entrevistador.
 ## Passo 4: Abra um Pull Request
 
 Faça push do seu branch e abra um PR contra \`main\`. Um mantenedor vai revisar e fazer o merge.
+
+## Níveis de dificuldade
+
+| Valor | Descrição |
+|---|---|
+| \`junior\` | Conceito básico — esperado de candidatos com até 2 anos de experiência |
+| \`pleno\` | Conceito intermediário — esperado de desenvolvedores plenos |
+| \`senior\` | Conceito avançado — exige ampla experiência ou especialização profunda |
+| \`especialista\` | Nível expert — conhecimento de nicho, arquitetural ou de baixo nível |
 
 ## Regras
 
