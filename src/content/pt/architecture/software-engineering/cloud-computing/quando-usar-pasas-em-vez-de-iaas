@@ -1,0 +1,40 @@
+---
+title: "Quando usar PaaS em vez de IaaS?"
+category: software-engineering
+subcategory: cloud-computing
+tags: [paas, iaas, cloud, infraestrutura]
+difficulty: pleno
+lang: pt
+---
+
+## Full Answer
+
+PaaS deve ser utilizado quando o objetivo é focar no desenvolvimento da aplicação sem se preocupar com a gestão da infraestrutura.
+
+Nesse modelo, o provedor cuida de servidores, sistema operacional, escalabilidade, monitoramento e atualizações da plataforma, permitindo que a equipe concentre esforços apenas no código e nas regras de negócio.
+
+Já o IaaS é mais indicado quando é necessário maior controle sobre o ambiente, incluindo configurações do sistema operacional, rede, segurança e infraestrutura.
+
+Exemplos de uso de PaaS:
+- Startups que precisam lançar produtos rapidamente
+- APIs e aplicações web simples
+- Sistemas que exigem deploy frequente
+- Equipes pequenas sem especialistas em infraestrutura
+
+Exemplos de uso de IaaS:
+- Aplicações com requisitos específicos de infraestrutura
+- Ambientes corporativos complexos
+- Sistemas legados
+- Cenários que exigem controle avançado de rede e segurança
+
+A principal diferença é que o PaaS prioriza produtividade e simplicidade, enquanto o IaaS oferece mais flexibilidade e controle.
+
+## Quick Answer
+
+Use PaaS quando quiser focar no desenvolvimento da aplicação e evitar o gerenciamento de infraestrutura. Use IaaS quando precisar de maior controle sobre servidores, rede e sistema operacional.
+
+## Flashcard
+
+**P:** Quando usar PaaS em vez de IaaS?
+
+**R:** Use PaaS quando a prioridade for desenvolver e implantar aplicações rapidamente sem gerenciar infraestrutura. Use IaaS quando for necessário maior controle do ambiente.
